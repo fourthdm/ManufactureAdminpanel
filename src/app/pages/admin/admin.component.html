@@ -1,1 +1,176 @@
-<p>admin works!</p>
+<div class="container-fluid">
+    <br><br><br><br>
+
+    <div class="text-end">
+        <button type="button" class="btn text-light btn-lg btt" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            title="Add Admin">
+            Add new Admin <i class="fa-solid fa-user-plus"></i>
+        </button>
+    </div>
+
+    <br> <br>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Admin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <br>
+                        <form [formGroup]="addadmin">
+                            <label for="Name">Name</label>
+                            <input type="text" formControlName="Name" class="form-control" placeholder="Name">
+                            <br>
+                            <label for="Email">Email</label>
+                            <input type="text" formControlName="Email" class="form-control" placeholder="Email">
+                            <br>
+                            <label for="PhoneNo">PhoneNo</label>
+                            <input type="text" formControlName="PhoneNo" class="form-control" placeholder="PhoneNo">
+                            <br>
+                            <label for="Username">Username</label>
+                            <input type="text" formControlName="Username" class="form-control" placeholder="Username">
+                            <br>
+                            <label for="Password">Password</label>
+                            <input type="text" formControlName="Password" class="form-control" placeholder="Password">
+                            <br>
+                            <label for="Role">Role Name:</label>
+                            <select class="form-select form-select-sm" formControlName="Role"
+                                aria-label="Small select example">
+                                <option value="/assets/ad.jpg"><img src="/assets/ad.jpg" alt=""></option>
+                                <option value="SuperAdmin">SuperAdmin </option>
+                                <option value="Admin">Admin <img src="/assets/logo.jpg" alt=""></option>
+                                <option value="Manager">Manager</option>
+                                <option value="Accountant">Accountant</option>
+                            </select>
+                            <br>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="Admin_Status"
+                                    formControlName="Admin_Status" (change)="toggleStatus($event)">
+                                <label class="form-check-label" for="Admin_Status">Checked Admin is Active or
+                                    Not</label>
+                            </div>
+                            <br>
+                            <button class="btn btn-success btn-lg mb-4" (click)="admin()">Add Admin</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">PhoneNo</th>
+                        <th scope="col">Username</th>
+                        <th scope="col" *ngIf="isAdmin">Password</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Added Date</th>
+                        <th scope="col">Updated Date</th>
+                        <th scope="col">AdminStatus</th>
+                        <th scope="col" *ngIf="isAdmin">Edit</th>
+                        <th scope="col" *ngIf="isAdmin">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of admins | paginate : {itemsPerPage : 10, currentPage : pro }">
+                        <td>{{a.Admin_id }}</td>
+                        <td>{{a.Name}}</td>
+                        <td>{{a.Email}}</td>
+                        <td>{{a.PhoneNo}}</td>
+                        <td>{{a.Username}}</td>
+                        <td *ngIf="isAdmin">{{a.Password}}</td>
+                        <td>{{a.Role}}</td>
+                        <td>{{a.Added_Date | date}} <br> {{a.Added_Date | date:'hh:mm a'}}</td>
+                        <td>{{a.Updated_Date | date}} <br> {{a.Updated_Date | date :'hh:mm a'}}</td>
+                        <!-- <td>{{a.Admin_Status}}</td> -->
+                        <td><span [ngClass]="{
+      'text-success': a.Admin_Status == 1,
+      ' text-secondary': a.Admin_Status != 1
+    }">
+                                <i class="fa-solid fa-circle fa-sm"></i> {{ a.Admin_Status == 1 ? 'Active' : 'Inactive'
+                                }}
+                            </span></td>
+
+                        <td *ngIf="isAdmin"> <a type="button" (click)="editAdmin(a.Admin_id)" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1" title="Edit a Admin">
+                                <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                            </a></td>
+                        <td *ngIf="isAdmin"><a type="button" (click)="delete(a['Admin_id'])" title="Delete a Admin"><i
+                                    class="fa-regular fa-trash-can fa-lg"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>  
+            <div class="text-center">
+                        <pagination-controls (pageChange)=" pro = $event "
+                            style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
+                    </div>
+        </div>
+    </div>
+
+
+    <!-- Button trigger modal -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Admin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <br>
+                        <form [formGroup]="editadmin">
+                            <label for="Name">Name</label>
+                            <input type="text" formControlName="Name" class="form-control" placeholder="Name">
+                            <br>
+                            <label for="Email">Email</label>
+                            <input type="text" formControlName="Email" class="form-control" placeholder="Email">
+                            <br>
+                            <label for="PhoneNo">PhoneNo</label>
+                            <input type="text" formControlName="PhoneNo" class="form-control" placeholder="PhoneNo">
+                            <br>
+                            <label for="Username">Username</label>
+                            <input type="text" formControlName="Username" class="form-control" placeholder="Username">
+                            <br>
+                            <label for="Password">Password</label>
+                            <input type="text" formControlName="Password" class="form-control" placeholder="Password">
+                            <br>
+
+                            <label for="Role">Role Name:</label>
+                            <!-- <input type="text" formControlName="PaymentMode" class="form-control"
+                                placeholder="PaymentMode"> -->
+                            <select class="form-select form-select-sm" formControlName="Role"
+                                aria-label="Small select example">
+                                <option value="Admin">Admin</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Accountant">Accountant</option>
+                            </select>
+                            <br>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="Admin_Status"
+                                    formControlName="Admin_Status" (change)="updateStatus($event)">
+                                <label class="form-check-label" for="Admin_Status">Checked Admin is Active or
+                                    Not</label>
+                            </div>
+
+                            <button class="btn btn-success btn-lg mb-4" (click)="Updateadmin()">Update Admin</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
