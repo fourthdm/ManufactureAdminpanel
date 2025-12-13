@@ -1,0 +1,21 @@
+.container-fluid {
+    padding: 2%;
+}
+
+h2 {
+    color: white;
+}
+
+.card {
+    background-color: #31355A;
+}
+
+p {
+    color: white;
+    font-family: 'newcustomfnts';
+}
+
+@font-face {
+    font-family: 'newcustomfnts';
+    src: url('/assets/fonts/Estedad VF.ttf');
+}

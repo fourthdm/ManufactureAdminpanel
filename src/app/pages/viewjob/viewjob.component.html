@@ -1,1 +1,47 @@
-<p>viewjob works!</p>
+<div class="container-fluid"> <br><br><br>
+    <div class="row">
+
+        <div class="text-center">
+            <h2>Job Details</h2>
+            <br><br><br>
+
+        </div>
+        <div class="card" *ngFor="let j of AllJob, let i= index">
+            <div class="text-end">
+                <p> <b>Job AddedDate : </b> {{ j.Added_Date | date }} <br> {{j.Added_Date | date:'h:mm a' }}</p>
+            </div>
+            <div class="row">
+                <div class="col-5"> 
+
+                    <p> <b>Job Name:</b> {{j.J_Name}}</p>
+                    <p> <b>Employee Name:</b> {{j.EmployeeName}}</p>
+                    <p> <b>QC Name:</b> {{j.QCName}}</p>
+                    <p> <b>Machine Name : </b> {{ j.Machine_Name }}</p>
+                    <p> <b>Machine Number : </b> {{ j.Machine_Number }}</p>
+                    <p> <b>Material Type : </b>{{j.Material_Type}}</p>
+                    <p> <b>Material Issued : </b>{{j.Material_Issued}}</p>
+                    <p> <b>Material Waste : </b>{{j.Material_Waste}}</p>
+                    <p> <b>Making Time : </b>{{j.Making_Time}}</p>
+                    <p> <b>QC Time : </b>{{j.QCTime}}</p>
+                    <p> <b>Given Time : </b>{{j.Given_Time}}</p>
+                    <p> <b>Task Done Time : </b>{{j.TaskDoneTime}}</p>
+                    <p> <b>Qc Status : </b>{{j.QcStatus}}</p>
+                    <p> <b>Employee Status : </b>{{j.EmployeeStatus}}</p>
+                    <p> <b>Checking : </b>{{j.Checking}}</p>
+                    <p> <b>DesignFile : </b>{{j.DesignFile}}</p>
+                    <p> <b>J_TotalTime : </b>{{j.J_TotalTime}}</p>
+                    <p> <b>J_QCTotalTime : </b>{{j.J_QCTotalTime}}</p>
+                    <p> <b>Repeated_Time : </b>{{j.Repeated_Time}}</p>
+                </div><br>
+
+                <div class="col-7"><br><br>
+                    <div *ngIf="dwgViewerUrl">
+                        <iframe [src]="dwgViewerUrl | safeurl" width="100%" height="1000px" frameborder="0">
+                        </iframe>
+                    </div>
+                </div><br>
+            </div>
+
+        </div>
+    </div>
+</div>

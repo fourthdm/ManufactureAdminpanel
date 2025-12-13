@@ -1,1 +1,26 @@
-<p>viewemployee works!</p>
+<div class="main">
+    <div class="container"><br><br><br>
+        <div class="text-center">
+            <h2>Employee Data</h2>
+        </div>
+        <div class="row">
+            <div class="cards" *ngFor="let e of EmployeeData, let i = index ">
+
+                <div class="text-end">
+                    <p><b>Added Date : </b> {{e.E_AddedDate | date}} <br> {{e.E_AddedDate | date:'hh:mm a'}}</p>
+                </div>
+
+                <p><b>Name</b> : {{e.E_Name}}</p>
+                <p><b>Employee Code : </b> {{e.E_Code}}</p>
+                <p><b>Employee Email : </b>{{e.E_Email}}</p>
+                <p><b>Employee Address : </b>{{e.E_Address}}</p>
+                <p><b>Employee Phone Number : </b>{{e.E_PhoneNo}}</p>
+                <p><b>Employee Username : </b> {{e.E_Username}}</p>
+                <p><b>Employee Password : </b> {{e.E_Password}}</p>
+                <p><b>Employee Role : </b> {{e.E_Role}}</p>
+                <p><b>Employee Status : </b> {{e.E_Status}}</p>
+                <p><b>Updated Date : </b> {{e.E_UpdatedDate}}</p>
+            </div>
+        </div>
+    </div>
+</div>

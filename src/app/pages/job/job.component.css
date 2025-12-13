@@ -1,0 +1,27 @@
+p {
+    font-family: 'newcustomfnts';
+}
+
+@font-face {
+    font-family: 'newcustomfnts';
+    src: url('/assets/fonts/Estedad VF.ttf');
+}
+
+.card {
+    background-color: #332642;
+    color: white;
+    /* box-shadow: #433558 0px 2px 4px, #433558 0px 7px 13px, #433558 0px 3px 0px; */
+    box-shadow: #433558 2px 2px 2px 2px, #433558  2px 5px 8px;
+}
+
+.rowinline {
+    display: flex;
+}
+
+.actions {
+    margin-left: 67%;
+}
+
+.fa-trash-can {
+    margin-left: 70% !important;
+}

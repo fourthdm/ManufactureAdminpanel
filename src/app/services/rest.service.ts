@@ -254,4 +254,22 @@ export class RestService {
     return this._http.delete(this.Url + '/DeleteJobs/' + Job_Id);
   }
 
+  //Job Table Data
+
+  Jobtabledata() {
+    return this._http.get(this.Url + '/Jobtabledata');
+  }
+
+  JobAdded(formdata: FormData) {
+    return this._http.post(this.Url + '/JobAdded', formdata);
+  }
+
+  JobtableDelete(Job_id: number) {
+    return this._http.delete(this.Url + '/JobtableDelete/' + Job_id);
+  }
+
+  UpdatedAJobnewTable(Job_id: number, formdata: FormData) {
+    return this._http.put(this.Url + '/UpdatedAJobnewTable/' + Job_id, formdata);
+  }
+
 }

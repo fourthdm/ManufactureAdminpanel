@@ -1,1 +1,21 @@
-<p>viewmachines works!</p>
+<div class="container"> <br><br><br>
+    <div class="row">
+
+        <div class="text-center">
+            <h2>Machine Details</h2>
+            <br><br><br>
+
+        </div>
+        <div class="card">
+            <div *ngFor="let m of Machines, let i= index">
+                <div class="text-end">
+                    <p> <b>Machine AddedDate : </b> {{ m.Added_Date | date }} <br> {{m.Added_Date | date:'h:mm a' }}</p>
+                </div>
+                <p> <b>Machine Code :</b> {{m.Machine_Code}}</p>
+                <p> <b>Machine Name : </b> {{ m.Machine_Name }}</p>
+                <p> <b>Machine Number : </b> {{ m.Machine_Number }}</p>
+                <p> <b>Machine Status : </b>{{m.Machine_Status}}</p>
+            </div>
+        </div>
+    </div>
+</div>

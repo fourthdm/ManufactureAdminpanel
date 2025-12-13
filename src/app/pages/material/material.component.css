@@ -1,0 +1,80 @@
+th {
+    font-weight: bold;
+}
+
+.dvss {
+    display: flex;
+}
+
+.info:hover {
+    cursor: pointer;
+    text-decoration: underline blue;
+    font-size: larger;
+}
+
+.rowss {
+    display: flex;
+}
+
+
+th {
+    background-color: #433558 !important;
+    color: white;
+    font-family: 'newcustomfnts';
+}
+
+td {
+    background-color: #31355A;
+    color: white;
+    font-family: 'newcustomfnts';
+}
+
+span {
+    font-weight: 700;
+}
+
+h1 {
+    color: white;
+}
+
+.btt {
+    border: 1px solid white;
+}
+
+label {
+    color: white;
+    font-family: 'newcustomfnts';
+}
+
+@font-face {
+    font-family: 'newcustomfnts';
+    src: url('/assets/fonts/Estedad VF.ttf');
+}
+
+select {
+    background-color: #31355A;
+    color: white;
+    width: 400px;
+}
+
+.modal-content {
+    background: linear-gradient(#781C7F, #2C1D60);
+    color: white;
+}
+
+.form-check {
+    margin-left: 5%;
+}
+
+.form-check-input {
+    width: 5%;
+    background-color: aliceblue;
+}
+
+.form-check-label {
+    margin-left: 12px;
+}
+
+.text-end {
+    margin-right: 5%;
+}
