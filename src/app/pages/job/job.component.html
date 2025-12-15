@@ -1,299 +1,224 @@
-<div  class="container">
-    <br >
-    <div  class="text-end">
-        <button
-            
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-            title="Add New Job"
-            class="btn text-light btt btn-lg"
-        >
+<br>
+<br>
+<div class="container">
+    <br>
+    <div class="text-end">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Add New Job" class="btn text-light btt btn-lg">
             Add New Job
-            <i  class="fa-solid fa-square-plus"></i>
+            <i class="fa-solid fa-square-plus"></i>
         </button>
-        <br >
-        <br >
+        <br>
+        <br>
     </div>
-    <div
-        
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-        class="modal fade"
-    >
-        <div  class="modal-dialog modal-lg modal-dialog-centered">
-            <div  class="modal-content">
-                <div  class="modal-header">
-                    <h5  id="exampleModalLabel" class="modal-title">Add Material</h5>
-                    <button
-                        
-                        type="button"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                        class="btn-close"
-                    ></button>
+    <div id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="exampleModalLabel" class="modal-title">Add Job</h5>
+                    <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn-close"></button>
                 </div>
-                <div  class="modal-body">
-                    <div  class="col-md-12">
-                        <form  novalidate="" class="ng-untouched ng-pristine ng-invalid">
-                            <label  for="">Job Name</label>
-                            <br >
-                            <input
-                                
-                                type="text"
-                                formcontrolname="J_Name"
-                                placeholder="Job Name"
-                                class="form-control ng-untouched ng-pristine ng-invalid"
-                            >
-                            <br >
-                            <div  class="row">
-                                <div  class="col-md-6">
-                                    <label >Employee Name</label>
-                                    <br >
-                                    <select  formcontrolname="E_id" class="ng-untouched ng-pristine ng-invalid">
-                                        <option  value="1">Fourthdm</option>
-                                        <!---->
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <form [formGroup]="jobsform" (ngSubmit)="submitJob()" >
+                            <label for="">Job Name</label>
+                            <br>
+                            <input  type="text" formcontrolname="J_Name" placeholder="Enter Job Name"  class="form-control">
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="E_id">Employee Name</label>
+                                    <br>
+                                    <select formcontrolname="E_id" >
+                                        <option *ngFor="let e of AllEmployee" [value]="e.E_id" >{{e.E_Name}}</option>
                                     </select>
-                                    <br >
+                                    <br>
                                 </div>
-                                <br >
-                                <div  class="col-md-6">
-                                    <label >Machine Name</label>
-                                    <br >
-                                    <select  formcontrolname="Machine_id" class="ng-untouched ng-pristine ng-invalid">
-                                        <option  value="2">CNC</option>
-                                        <option  value="3">CNC2</option>
-                                        <!---->
+                                <br>
+                                <div class="col-md-6">
+                                    <label for="Machine_id">Machine Name</label>
+                                    <br>
+                                    <select formcontrolname="Machine_id" class="">
+                                        <option *ngFor="let m of machines" [value]="m.Machine_id">{{m.Machine_Name}}</option>
                                     </select>
-                                    <br >
-                                    <br >
+                                    <br>
+                                    <br>
                                 </div>
                             </div>
-                            <div  class="row">
-                                <div  class="col-md-6">
-                                    <label >Material Type</label>
-                                    <br >
-                                    <select
-                                        
-                                        formcontrolname="Material_id"
-                                        style="height: 35%;"
-                                        class="ng-untouched ng-pristine ng-invalid"
-                                    >
-                                        <option  value="4"> Iron Sheet</option>
-                                        <option  value="1"> IronBlock</option>
-                                        <option  value="3"> Rod</option>
-                                        <option  value="6"> Carbon Steel</option>
-                                        <option  value="5"> Rod</option>
-                                        <!---->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="Material_id">Material Type</label>
+                                    <br>
+                                    <select formcontrolname="Material_id" style="height: 35%;" class="">
+                                        <option *ngFor="let mat of AllMaterial" [value]="mat.Material_id">{{mat.Material_Name}}</option>
                                     </select>
-                                    <br >
+                                    <br>
                                 </div>
-                                <br >
-                                <div  class="col-md-6">
-                                    <label >Material Issued</label>
-                                    <br >
-                                    <input
-                                        
-                                        type="text"
-                                        formcontrolname="Material_Issued"
-                                        placeholder="Material Issue Quantity (e.g. 500)"
-                                        class="form-control ng-untouched ng-pristine ng-invalid"
-                                    >
-                                    <br >
+                                <br>
+                                <div class="col-md-6">
+                                    <label>Material Issued</label>
+                                    <br>
+                                    <input type="text" formcontrolname="Material_Issued" placeholder="Material Issue Quantity (e.g. 500)" class="form-control">    
+                                    <br>
                                 </div>
                             </div>
-                            <div >
-                                <label >Design File</label>
-                                <input  type="file" class="form-control">
+                            <div>
+                                <label>Design File</label>
+                                <input type="file"  (change)="onFileSelected($event)" class="form-control">
                             </div>
-                            <br >
-                            <br >
-                            <button  type="submit">Assign Job</button>
+                            <br>
+                            <br>
+                            <button class="btn btn-outline-light" type="submit">Assign Job</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <br >
-    <br >
-    <br >
-    <div  class="row">
-        <div  class="col-md-4">
-            <div  class="card">
-                <div  class="card-body">
-                    <div  class="rowinline">
-                        <div  class="text-start">
-                            <p
-                                
-                                title="View Information"
-                                class="info"
-                                tabindex="0"
-                            >
-                                <b >Job_id :</b>
-                                2
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let j of Alljob">
+            <div class="card"  >
+                <div class="card-body">
+                    <div class="rowinline">
+                        <div class="text-start">
+                            <p title="View Information" class="info" tabindex="0">
+                                <b>Job_id :</b>
+                                {{j.Job_id}}
                             </p>
                         </div>
-                        <div  class="actions">
-                            <a
-                                
-                                type="button"
-                                data-bs-toggle="modal"
-                                data-bs-target="#exampleModal1"
-                                title="Edit a Job"
-                            >
-                                <i  class="fa-solid fa-pen-to-square"></i>
+                        <div class="actions">
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" title="Edit a Job" (click)="editjobs(j.Job_id)">
+                                <i class="fa-solid fa-pen-to-square"></i>
                             </a>
-                            <a  type="button" title="Delete a Job">
-                                <i  class="fa-solid fa-trash-can"></i>
+                            <a type="button" title="Delete a Job">
+                                <i class="fa-solid fa-trash-can"></i>
                             </a>
                         </div>
                     </div>
-                    <p
-                        
-                        title="View Information"
-                        class="info"
-                        tabindex="0"
-                    >
-                        <b >Job Name :</b>
-                        New Demo
+                    <p title="View Information" class="info" tabindex="0">
+                        <b>Job Name :</b>
+                     {{j.J_Name}}
                     </p>
-                    <p >
-                        <b >Employee Name :</b>
-                        Fourthdm
+                    <p>
+                        <b>Employee Name :</b>
+                        {{j.E_Name}}
                     </p>
-                    <p >
-                        <b >Material Name :</b>
-                        Carbon Steel
+                    <p>
+                        <b>Material Name :</b>
+                     {{j.Material_Name}}
                     </p>
-                    <p >
-                        <b >Material Type :</b>
-                        Steel
+                    <p>
+                        <b>Material Type :</b>
+                        {{j.Material_Type}}
                     </p>
-                    <p >
-                        <b >Material Issued :</b>
-                        100
+                    <p>
+                        <b>Material Issued :</b>
+                        {{j.Material_Issued}}
                     </p>
-                    <p >
-                        <b >Machine Name :</b>
-                        CNJ2
+                    <p>
+                        <b>Machine Name :</b>
+                        {{  j.Machine_Name}}
                     </p>
-                    <p >
-                        <b >Machine Number :</b>
-                        1
+                    <p>
+                        <b>Machine Number :</b>
+                        {{j.Machine_Number}}
                     </p>
-                    <p >
-                        <b >Added Date :</b>
-                        Dec 9, 2025 , 05:04 PM
+                    <p>
+                        <b>Added Date :</b>
+                        {{j.Added_Date | date:'medium'}}
                     </p>
-                    <p >
-                        <b >Status :</b>
-                        Assigned
+                    <p>
+                        <b>Status :</b>
+                        {{j.Status}}
                     </p>
                 </div>
             </div>
-            <br >
+            <br>
         </div>
         <!---->
     </div>
     <div
-        
-        id="exampleModal1"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-        class="modal fade"
-    >
-        <div  class="modal-dialog modal-lg modal-dialog-centered">
-            <div  class="modal-content">
-                <div  class="modal-header">
-                    <h5  id="exampleModalLabel" class="modal-title">Edit Jobs</h5>
+        id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="exampleModalLabel" class="modal-title">Edit Jobs</h5>
                     <button
-                        
                         type="button"
                         data-bs-dismiss="modal"
                         aria-label="Close"
                         class="btn-close"
                     ></button>
                 </div>
-                <div  class="modal-body">
-                    <div  class="col-md-12">
-                        <form  novalidate="" class="ng-untouched ng-pristine ng-invalid">
-                            <label  for="">Job Name</label>
-                            <br >
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <form [formGroup]="Editjobsform" (ngSubmit)="JobUpdates()" >
+                            <label for="">Job Name</label>
+                            <br>
                             <input
-                                
                                 type="text"
                                 formcontrolname="J_Name"
                                 placeholder="Job Name"
-                                class="form-control ng-untouched ng-pristine ng-invalid"
+                                class="form-control "
                             >
-                            <br >
-                            <div  class="row">
-                                <div  class="col-md-6">
-                                    <label >Employee Name</label>
-                                    <br >
-                                    <select  formcontrolname="E_id" class="ng-untouched ng-pristine ng-invalid">
-                                        <option  value="1">Fourthdm</option>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Employee Name</label>
+                                    <br>
+                                    <select formcontrolname="E_id" class="">
+                                        <option value="1">Fourthdm</option>
                                         <!---->
                                     </select>
-                                    <br >
+                                    <br>
                                 </div>
-                                <br >
-                                <div  class="col-md-6">
-                                    <label >Machine Name</label>
-                                    <br >
-                                    <select  formcontrolname="Machine_id" class="ng-untouched ng-pristine ng-invalid">
-                                        <option  value="2">CNC</option>
-                                        <option  value="3">CNC2</option>
-                                        <!---->
+                                <br>
+                                <div class="col-md-6">
+                                    <label>Machine Name</label>
+                                    <br>
+                                    <select formcontrolname="Machine_id" class="">
+                                        <option value="2">CNC</option>
+                                        <option value="3">CNC2</option>
                                     </select>
-                                    <br >
-                                    <br >
+                                    <br>
+                                    <br>
                                 </div>
                             </div>
-                            <div  class="row">
-                                <div  class="col-md-6">
-                                    <label >Material Type</label>
-                                    <br >
-                                    <select
-                                        
-                                        formcontrolname="Material_id"
-                                        style="height: 35%;"
-                                        class="ng-untouched ng-pristine ng-invalid"
-                                    >
-                                        <option  value="4"> Iron Sheet</option>
-                                        <option  value="1"> IronBlock</option>
-                                        <option  value="3"> Rod</option>
-                                        <option  value="6"> Carbon Steel</option>
-                                        <option  value="5"> Rod</option>
-                                        <!---->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Material Type</label>
+                                    <br>
+                                    <select formcontrolname="Material_id" style="height: 35%;" class="">
+                                        <option value="4"> Iron Sheet</option>
+                                        <option value="1"> IronBlock</option>
+                                        <option value="3"> Rod</option>
+                                        <option value="6"> Carbon Steel</option>
+                                        <option value="5"> Rod</option>
                                     </select>
-                                    <br >
+                                    <br>
                                 </div>
-                                <br >
-                                <div  class="col-md-6">
-                                    <label >Material Issued</label>
-                                    <br >
+                                <br>
+                                <div class="col-md-6">
+                                    <label>Material Issued</label>
+                                    <br>
                                     <input
-                                        
                                         type="text"
                                         formcontrolname="Material_Issued"
                                         placeholder="Material Issue Quantity (e.g. 500)"
-                                        class="form-control ng-untouched ng-pristine ng-invalid"
+                                        class="form-control "
                                     >
-                                    <br >
+                                    <br>
                                 </div>
                             </div>
-                            <div >
-                                <label >Design File</label>
-                                <input  type="file" class="form-control">
+                            <div>
+                                <label>Design File</label>
+                                <input type="file" (change)="onFileChange($event,'DesignFile')" class="form-control">
                             </div>
-                            <br >
-                            <br >
-                            <button  type="submit">Assign Job</button>
+                            <br>
+                            <br>
+                            <button class="btn btn-outline-light" type="submit">Update Job</button>
                         </form>
                     </div>
                 </div>

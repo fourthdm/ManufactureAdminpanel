@@ -25,7 +25,7 @@ export class JobComponent {
 
   constructor(private fb: FormBuilder, private _rest: RestService) {
 
-    this.jobsform = new FormGroup({
+    this.jobsform = this.fb.group({
       J_Name: new FormControl("", Validators.required),
       E_id: new FormControl("", Validators.required),
       Machine_id: new FormControl("", Validators.required),
@@ -33,7 +33,7 @@ export class JobComponent {
       Material_Issued: new FormControl("", Validators.required),
       DesignFile: new FormControl(null)
     }),
-      this.Editjobsform = new FormGroup({
+      this.Editjobsform = this.fb.group({
         Job_id: new FormControl(""),
         J_Name: new FormControl("", Validators.required),
         E_id: new FormControl("", Validators.required),
@@ -44,7 +44,6 @@ export class JobComponent {
       })
 
   }
-
 
   ngOnInit() {
     this.AllJobs(),
@@ -63,8 +62,8 @@ export class JobComponent {
   }
 
   loadLists() {
-    this._rest.AvailbleMachine().subscribe((data:any) => this.machines = data.data || []),
-      this._rest.AllOnlyEmployee().subscribe((data:any) => this.employees = data.data || [])
+    this._rest.AvailbleMachine().subscribe((data: any) => this.machines = data.data || []),
+      this._rest.AllOnlyEmployee().subscribe((data: any) => this.employees = data.data || [])
   }
 
 
@@ -72,22 +71,22 @@ export class JobComponent {
   //   this.selectedFile = event.target.files[0]
   // }
 
-  addJob() {
-    if (this.form.invalid)
-      return alert("Fill required fields");
-    const t = new FormData;
-    Object.keys(this.form.value).forEach(r => t.append(r, this.form.value[r])),
-      this.selectedFile && t.append("DesignFile", this.selectedFile),
-      this._rest.JobAdd(t).subscribe({
-        next: r => {
-          alert("Job created"),
-            this.form.reset(),
-            this.loadLists()
-        }
-        ,
-        error: r => alert("Error: " + r.error?.message || 0)
-      })
-  }
+  // addJob() {
+  //   if (this.form.invalid)
+  //     return alert("Fill required fields");
+  //   const t = new FormData;
+  //   Object.keys(this.form.value).forEach(r => t.append(r, this.form.value[r])),
+  //     this.selectedFile && t.append("DesignFile", this.selectedFile),
+  //     this._rest.JobAdd(t).subscribe({
+  //       next: r => {
+  //         alert("Job created"),
+  //           this.form.reset(),
+  //           this.loadLists()
+  //       }
+  //       ,
+  //       error: r => alert("Error: " + r.error?.message || 0)
+  //     })
+  // }
 
   AllJobs() {
     this._rest.Jobtabledata().subscribe((data: any) => {
@@ -133,10 +132,18 @@ export class JobComponent {
     }
   }
 
+  // editjobs(Job_id: number) {
+  //   const r = this.Alljob.find(o => o.Job_id === Job_id);
+  //   r && (this.SelectedJob = 1,
+  //     this.Editjobsform.patchValue(r))
+  // }
+
   editjobs(Job_id: number) {
-    const r = this.Alljob.find(o => o.Job_id === Job_id);
-    r && (this.SelectedJob = 1,
-      this.Editjobsform.patchValue(r))
+    const Assignjobs = this.Alljob.find(A => A.Job_id === Job_id);
+    if (Assignjobs) {
+      this.SelectedJob = 1;
+      this.Editjobsform.patchValue(Assignjobs);
+    }
   }
 
   onFileChange(event: any, fieldName: string): void {
@@ -155,18 +162,17 @@ export class JobComponent {
   // }
 
   JobUpdates() {
-    const t = new FormData;
-    Object.keys(this.Editjobsform.controls).forEach(r => {
-      t.append(r, this.Editjobsform.get(r)?.value)
+    const formdata = new FormData;
+    Object.keys(this.Editjobsform.controls).forEach((key:any) => {
+      formdata.append(key, this.Editjobsform.get(key)?.value)
     }
     ),
-      this._rest.UpdatedAJobnewTable(this.Editjobsform.value.Job_id, t).subscribe(r => {
-        console.log("Update success", r),
+      this._rest.UpdatedAJobnewTable(this.Editjobsform.value.Job_id, formdata).subscribe((data:any) => {
+        console.log("Update success", data),
           this.Editjobsform.reset(),
           this.ngOnInit()
-      }
-        , r => {
-          console.error("Update error", r)
+      }, (err:any) => {
+          console.error("Update error", err);
         }
       )
   }

@@ -257,7 +257,7 @@ export class RestService {
   //Job Table Data
 
   Jobtabledata() {
-    return this._http.get(this.Url + '/Jobtabledata');
+    return this._http.get(this.Url + '/jobtableAllData');
   }
 
   JobAdded(formdata: FormData) {

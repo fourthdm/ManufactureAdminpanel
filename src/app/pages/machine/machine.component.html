@@ -76,14 +76,13 @@
                             class="fa-regular fa-trash-can fa-lg"></i></a>
                 </td>
             </tr>
-            <br>
+                   </tbody>
+    </table>
+    <br>
             <div class="text-center">
                 <pagination-controls (pageChange)=" pro = $event "
                     style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
             </div>
-
-        </tbody>
-    </table>
     <br>
 
 
@@ -170,8 +169,6 @@
                                     <option [value]="2">Allocated</option>
                                 </select>
                             </div>
-
-
                             <!-- <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" id="Machine_Status"
                                     formControlName="Machine_Status" (change)="ToggleStatus($event)">
@@ -187,5 +184,4 @@
             </div>
         </div>
     </div>
-
 </div>
