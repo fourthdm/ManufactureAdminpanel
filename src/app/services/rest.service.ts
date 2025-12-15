@@ -167,9 +167,12 @@ export class RestService {
   //   return this._http.get(this.Url + '/AllNewjobtable');
   // }
 
-  ALLJobsById(J_id: number) {
-    return this._http.get(this.Url + '/AlljobsByID/' + J_id);
+  ALLJobsById(Job_id: number) {
+    return this._http.get(this.Url + '/jobtableAllDatabyJob_id/' + Job_id);
   }
+  // ALLJobsById(J_id: number) {
+  //   return this._http.get(this.Url + '/AlljobsByID/' + J_id);
+  // }
   //API Ends 
 
 
@@ -261,7 +264,7 @@ export class RestService {
   }
 
   JobAdded(formdata: FormData) {
-    return this._http.post(this.Url + '/JobAdded', formdata);
+    return this._http.post(this.Url + '/NewAddJobupdatematerial', formdata);
   }
 
   JobtableDelete(Job_id: number) {
@@ -269,7 +272,7 @@ export class RestService {
   }
 
   UpdatedAJobnewTable(Job_id: number, formdata: FormData) {
-    return this._http.put(this.Url + '/UpdatedAJobnewTable/' + Job_id, formdata);
+    return this._http.put(this.Url + '/NewUpdateJobupdatematerial/' + Job_id, formdata);
   }
 
 }

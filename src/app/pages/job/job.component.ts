@@ -40,6 +40,7 @@ export class JobComponent {
         Machine_id: new FormControl("", Validators.required),
         Material_id: new FormControl("", Validators.required),
         Material_Issued: new FormControl("", Validators.required),
+        // Material_Waste: new FormControl("", Validators.required),
         DesignFile: new FormControl(null)
       })
 
@@ -122,12 +123,12 @@ export class JobComponent {
   }
 
   FormatIssuedMaterial() {
-    let t = this.jobsform.get("Material_Issued")?.value;
-    if (t) {
-      t = t.toString().trim();
-      const r = t.replace(/[^0-9.]/g, "");
-      r && this.jobsform.patchValue({
-        Material_Issued: `${r} Kg`
+    let Material_Issued = this.jobsform.get("Material_Issued")?.value;
+    if (Material_Issued) {
+      Material_Issued = Material_Issued.toString().trim();
+      const numericValue = Material_Issued.replace(/[^0-9.]/g, "");
+      numericValue && this.jobsform.patchValue({
+        Material_Issued: `${numericValue} Kg`
       })
     }
   }
@@ -153,27 +154,19 @@ export class JobComponent {
     }
   }
 
-
-  // onFileChange(event:any, fieldName:string) {
-  //   const file = event.target.files[0];
-  //   o && this.Editjobsform.patchValue({
-  //     [r]: o
-  //   })
-  // }
-
   JobUpdates() {
     const formdata = new FormData;
-    Object.keys(this.Editjobsform.controls).forEach((key:any) => {
+    Object.keys(this.Editjobsform.controls).forEach((key: any) => {
       formdata.append(key, this.Editjobsform.get(key)?.value)
     }
     ),
-      this._rest.UpdatedAJobnewTable(this.Editjobsform.value.Job_id, formdata).subscribe((data:any) => {
+      this._rest.UpdatedAJobnewTable(this.Editjobsform.value.Job_id, formdata).subscribe((data: any) => {
         console.log("Update success", data),
           this.Editjobsform.reset(),
           this.ngOnInit()
-      }, (err:any) => {
-          console.error("Update error", err);
-        }
+      }, (err: any) => {
+        console.error("Update error", err);
+      }
       )
   }
 

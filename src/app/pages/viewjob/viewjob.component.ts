@@ -43,8 +43,8 @@ export class ViewjobComponent {
 
   ngOnInit(): void {
     this._activatedRoute.params.subscribe((params: Params) => {
-      const J_id = params['J_id'];
-      this._rest.ALLJobsById(J_id).subscribe((data: any) => {
+      const Job_id = params['Job_id'];
+      this._rest.ALLJobsById(Job_id).subscribe((data: any) => {
         this.AllJob = data.data;
         if (this.AllJob.length > 0) {
           const designFileUrl = this.AllJob[0].DesignFile;

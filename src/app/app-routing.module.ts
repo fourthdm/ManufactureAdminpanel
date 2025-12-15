@@ -29,7 +29,7 @@ const routes: Routes = [
       { path: 'Material', component: MaterialComponent },
       { path: 'Job', component: JobComponent },
       { path: 'Jobss', component: JobComponent },
-      { path: 'JobInformation/:J_id', component: ViewjobComponent },
+      { path: 'JobInformation/:Job_id', component: ViewjobComponent },
       { path: 'AssignJob', component: AsssignjobComponent },
       { path: 'DesingerJob', component: DesignerjobComponent },
       { path: '**', redirectTo: 'dashboard' }

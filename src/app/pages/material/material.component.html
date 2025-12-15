@@ -69,7 +69,7 @@
 
         <div class="col-md-2">
             <br>
-            <a (click)="AllMaterial()" style="color: white;"><i class="fa-solid fa-arrow-rotate-right"></i></a>
+            <a  class="btn btn-outline-secondary" (click)="AllMaterial()" style="color: white;"><i class="fa-solid fa-arrow-rotate-right"></i></a>
         </div>
 
     </div>
@@ -83,7 +83,8 @@
                 <th>Material Type</th>
                 <th>Material Weight</th>
                 <th>Material Quantity</th>
-                <th>Available_Material_Quantity </th>
+                <th>Available Material Quantity </th>
+                <th>Total Used Material</th>
                 <th>Added Date</th>
                 <th>Material Status</th>
                 <th>Edit</th>
@@ -101,6 +102,7 @@
                 <td>{{ Material.Material_Weight }}</td>
                 <td>{{ Material.Material_Quantity }}</td>
                 <td>{{ Material.Available_Material_Quantity }}</td>
+                <td>{{ Material.Total_Used }}</td>
                 <td>{{ Material.Added_Date | date }} <br> {{Material.Added_Date | date:'h:mm a' }}</td>
                 <td>
                     <span [ngClass]="{
