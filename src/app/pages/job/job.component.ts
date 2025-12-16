@@ -158,16 +158,14 @@ export class JobComponent {
     const formdata = new FormData;
     Object.keys(this.Editjobsform.controls).forEach((key: any) => {
       formdata.append(key, this.Editjobsform.get(key)?.value)
-    }
-    ),
+    }),
       this._rest.UpdatedAJobnewTable(this.Editjobsform.value.Job_id, formdata).subscribe((data: any) => {
         console.log("Update success", data),
           this.Editjobsform.reset(),
           this.ngOnInit()
       }, (err: any) => {
         console.error("Update error", err);
-      }
-      )
+      });
   }
 
   Allemp() {
@@ -176,8 +174,7 @@ export class JobComponent {
         this.AllEmployee = data.data
     }, (err: any) => {
       console.log(err)
-    }
-    )
+    });
   }
 
   AllQCData() {

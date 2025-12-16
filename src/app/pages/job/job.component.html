@@ -61,10 +61,10 @@
                                     <br>
                                 </div>
                             </div>
-                            <div>
+                            <!-- <div>
                                 <label>Design File</label>
                                 <input type="file"  (change)="onFileSelected($event)" class="form-control">
-                            </div>
+                            </div> -->
                             <br>
                             <br>
                             <button class="btn btn-outline-light" type="submit">Assign Job</button>
@@ -164,23 +164,21 @@
                                 class="form-control "
                             >
                             <br>
-                            <div class="row">
+                       <div class="row">
                                 <div class="col-md-6">
-                                    <label>Employee Name</label>
+                                    <label for="E_id">Employee Name</label>
                                     <br>
-                                    <select formControlName="E_id" class="">
-                                        <option value="1">Fourthdm</option>
-                                        <!---->
+                                    <select formControlName="E_id" >
+                                        <option *ngFor="let e of AllEmployee" [value]="e.E_id" >{{e.E_Name}}</option>
                                     </select>
                                     <br>
                                 </div>
                                 <br>
                                 <div class="col-md-6">
-                                    <label>Machine Name</label>
+                                    <label for="Machine_id">Machine Name</label>
                                     <br>
                                     <select formControlName="Machine_id" class="">
-                                        <option value="2">CNC</option>
-                                        <option value="3">CNC2</option>
+                                        <option *ngFor="let m of machines" [value]="m.Machine_id">{{m.Machine_Name}}</option>
                                     </select>
                                     <br>
                                     <br>
@@ -188,14 +186,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Material Type</label>
+                                    <label for="Material_id">Material Type</label>
                                     <br>
                                     <select formControlName="Material_id" style="height: 35%;" class="">
-                                        <option value="4"> Iron Sheet</option>
-                                        <option value="1"> IronBlock</option>
-                                        <option value="3"> Rod</option>
-                                        <option value="6"> Carbon Steel</option>
-                                        <option value="5"> Rod</option>
+                                        <option *ngFor="let mat of AllMaterial" [value]="mat.Material_id">{{mat.Material_Name}}</option>
                                     </select>
                                     <br>
                                 </div>
@@ -203,26 +197,11 @@
                                 <div class="col-md-6">
                                     <label>Material Issued</label>
                                     <br>
-                                    <input
-                                        type="text"
-                                        formControlName="Material_Issued"
-                                        placeholder="Material Issue Quantity (e.g. 500)"
-                                        class="form-control "
-                                    >
+                                    <input type="text" formControlName="Material_Issued" placeholder="Material Issue Quantity (e.g. 500)" class="form-control">    
                                     <br>
                                 </div>
-                                <!-- <div class="col-md-6">
-                                    <label>Material Waste</label>
-                                    <br>
-                                    <input
-                                        type="text"
-                                        formControlName="Material_Waste"
-                                        placeholder="Material Issue Quantity (e.g. 500)"
-                                        class="form-control "
-                                    >
-                                    <br>
-                                </div> -->
                             </div>
+                         
                             <div>
                                 <label>Design File</label>
                                 <input type="file" (change)="onFileChange($event,'DesignFile')" class="form-control">
