@@ -275,4 +275,22 @@ export class RestService {
     return this._http.put(this.Url + '/NewUpdateJobupdatematerial/' + Job_id, formdata);
   }
 
+  // API for Companies
+
+  AddCompanies(data:any){
+    return this._http.post(this.Url + '/AddCompanies',data);
+  }
+
+  AllCompanies(){
+    return this._http.get(this.Url + '/AllCompanies');
+  }
+
+  UpdateComapnies(data:any){
+    return this._http.put(this.Url + '/UpdateCompanies/' + data.company_id , data);
+  }
+
+  DeleteCompanies(company_id : any){
+    return this._http.delete(this.Url + '/DeleteCompanies/' + company_id);
+  }
+
 }

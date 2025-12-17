@@ -24,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CompanyComponent } from './pages/company/company.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ViewemployeeComponent,
     ViewjobComponent,
     ViewmachinesComponent,
-    SafeurlPipe
+    SafeurlPipe,
+    CompanyComponent
   ],
   imports: [
     BrowserModule,

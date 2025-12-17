@@ -13,6 +13,7 @@ import { JobComponent } from './pages/job/job.component';
 import { ViewjobComponent } from './pages/viewjob/viewjob.component';
 import { AsssignjobComponent } from './pages/asssignjob/asssignjob.component';
 import { DesignerjobComponent } from './pages/designerjob/designerjob.component';
+import { CompanyComponent } from './pages/company/company.component';
 
 const routes: Routes = [
   { path: ' ', redirectTo: 'login', pathMatch: "full" },
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'JobInformation/:Job_id', component: ViewjobComponent },
       { path: 'AssignJob', component: AsssignjobComponent },
       { path: 'DesingerJob', component: DesignerjobComponent },
+      { path :'Company',component:CompanyComponent},
       { path: '**', redirectTo: 'dashboard' }
     ]
   },
