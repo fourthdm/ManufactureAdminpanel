@@ -6,7 +6,8 @@ import { StateService } from './state.service';
   providedIn: 'root'
 })
 export class RestService {
-  Url = 'http://localhost:3000';
+  // Url = 'http://localhost:3000';
+  Url = 'https://ysurveillance.com/Manufacture';
 
   constructor(private _http: HttpClient, private _state: StateService) { }
 
@@ -276,21 +277,82 @@ export class RestService {
   }
 
   // API for Companies
-
-  AddCompanies(data:any){
-    return this._http.post(this.Url + '/AddCompanies',data);
+  AddCompanies(data: any) {
+    return this._http.post(this.Url + '/AddCompanies', data);
   }
 
-  AllCompanies(){
+  AllCompanies() {
     return this._http.get(this.Url + '/AllCompanies');
   }
 
-  UpdateComapnies(data:any){
-    return this._http.put(this.Url + '/UpdateCompanies/' + data.company_id , data);
+  UpdateComapnies(data: any) {
+    return this._http.put(this.Url + '/UpdateCompanies/' + data.company_id, data);
   }
 
-  DeleteCompanies(company_id : any){
+  DeleteCompanies(company_id: any) {
     return this._http.delete(this.Url + '/DeleteCompanies/' + company_id);
   }
+
+  //Vendors APi 
+  AddVendors(data: any) {
+    return this._http.post(this.Url + '/AddVendors', data);
+  }
+
+  UpdateVendor(data: any) {
+    return this._http.put(this.Url + '/UpdateVendors/' + data.vendor_id, data);
+  }
+
+  AllVendorsData() {
+    return this._http.get(this.Url + '/AllVendors');
+  }
+
+  DeleteVendors(vendor_id: any) {
+    return this._http.delete(this.Url + '/DeleteVendor/' + vendor_id);
+  }
+  //Vendors APi Ends
+
+  //VendorsChallan API 
+  AddVendorsChallan(data: any) {
+    return this._http.post(this.Url + '/vendor-challan/create', data);
+  }
+
+  AllVendorChallan() {
+    return this._http.get(this.Url + '/ALLvendor-challan');
+  }
+
+  GenerateChallan(challan_id: any) {
+    return this._http.get(`${this.Url}/GetChallanPDF/${challan_id}`, {
+      responseType: 'blob'
+    });
+  }
+
+  DeliveryChallanData() {
+    return this._http.get(this.Url + '/ALLDelivery-challan');
+  }
+
+  GenerateDeliveryChallan(delivery_challan_id: any) {
+    return this._http.get(`${this.Url}/GetDeliveryChallanPDF/${delivery_challan_id}`, {
+      responseType: 'blob'
+    });
+  }
+  //VendorsChallan API Ends
+
+  //APi for Customer
+  AddCustomers(data: any) {
+    return this._http.post(this.Url + '/AddCustomers', data);
+  }
+
+  AllCutomers() {
+    return this._http.get(this.Url + '/AllCustomers');
+  }
+
+  Updatecustomer(data: any) {
+    return this._http.put(this.Url + '/UpdateCustomers/' + data.customer_id, data);
+  }
+
+  DelteCustomer(customer_id:any){
+    return this._http.delete(this.Url + '/DeleteCustomers/' + customer_id);
+  }
+  //APi for Customerends
 
 }

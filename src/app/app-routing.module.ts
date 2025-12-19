@@ -14,6 +14,10 @@ import { ViewjobComponent } from './pages/viewjob/viewjob.component';
 import { AsssignjobComponent } from './pages/asssignjob/asssignjob.component';
 import { DesignerjobComponent } from './pages/designerjob/designerjob.component';
 import { CompanyComponent } from './pages/company/company.component';
+import { VendorjobworkchallanComponent } from './pages/vendorjobworkchallan/vendorjobworkchallan.component';
+import { VendorsComponent } from './pages/vendors/vendors.component';
+import { CustomerComponent } from './pages/customer/customer.component';
+import { DeliverychallanComponent } from './pages/deliverychallan/deliverychallan.component';
 
 const routes: Routes = [
   { path: ' ', redirectTo: 'login', pathMatch: "full" },
@@ -22,7 +26,7 @@ const routes: Routes = [
     path: 'Home', component: HomeComponent, children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'Admin', component: AdminComponent },
+      { path: 'Admin', component: AdminComponent, title: 'Admin pages' },
       { path: 'Employee', component: EmployeeComponent },
       { path: 'EmployeeInformation/:E_id', component: ViewemployeeComponent },
       { path: 'Machine', component: MachineComponent },
@@ -33,7 +37,11 @@ const routes: Routes = [
       { path: 'JobInformation/:Job_id', component: ViewjobComponent },
       { path: 'AssignJob', component: AsssignjobComponent },
       { path: 'DesingerJob', component: DesignerjobComponent },
-      { path :'Company',component:CompanyComponent},
+      { path: 'Customer', component: CustomerComponent },
+      { path: 'DeliveryChallan',component:DeliverychallanComponent },
+      { path: 'Vendors', component: VendorsComponent },
+      { path: 'VendorJobWorkChallan', component: VendorjobworkchallanComponent, title: 'Vendor Job Work Challan Page ' },
+      { path: 'Company', component: CompanyComponent },
       { path: '**', redirectTo: 'dashboard' }
     ]
   },
@@ -42,7 +50,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,0 +1,150 @@
+<div class="container-fluid">
+    <br><br><br><br>
+
+    <div class="text-end">
+        <button type="button" class="btn text-light btn-lg btt" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            title="Add customer">
+            Add New Customers <i class="fa-solid fa-user-plus"></i>
+        </button>
+    </div>
+
+    <br> <br>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Customer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <br>
+                        <form [formGroup]="AddCustomerform">
+                            <label for="company_name">Company Name</label>
+                            <input type="text" formControlName="company_name" class="form-control" placeholder="Enter  company Name">
+                            <br>
+                         
+                            <label for="customer_name">Customer Name </label>
+                            <input type="text" formControlName="customer_name" class="form-control" placeholder="Enter Vendor Name">
+                            <br>
+                            <label for="customer_phoneno">Customer phoneno</label>
+                            <input type="text" formControlName="customer_phoneno" class="form-control" placeholder="Enter  customer_phoneno">
+                            <br>
+                            <label for="customer_email">Customer Email</label>
+                            <input type="text" formControlName="customer_email" class="form-control" placeholder="Enter  customer_email">
+                            <br>
+                            
+                            <label for="gst_no">Customer Company GST No.</label>
+                            <input type="text" formControlName="gst_no" class="form-control" placeholder="Enter Vendor Company gst_no">
+                            <br>
+
+                            <label for="customer_address">Customer_address</label><br>
+                            <textarea name="customer_address" id="" formControlName="customer_address" style="width: 100%;"></textarea>
+                            <br>
+                            <br>
+                            <button class="btn btn-success btn-lg mb-4" (click)="Addcustomers()">Add Customer</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Customer Code</th>
+                        <th scope="col">Customer Name</th>                        
+                        <th scope="col">Company Name</th>                        
+                        <th scope="col">Phone No</th>
+                        <th scope="col">Email</th>
+                           <th scope="col">GSTNo</th>
+                        <th scope="col">Address</th>
+                     
+                        <th scope="col">Date</th>                        
+                        <th scope="col" *ngIf="isAdmin">Edit</th>
+                        <th scope="col" *ngIf="isAdmin">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of allcustomers | paginate : {itemsPerPage : 10, currentPage : pro }">
+                        <td>{{a.customer_id }}</td>
+                           <td>{{a.customer_code}}</td>
+                        <td>{{a.customer_name}}</td>
+                        <td>{{a.company_name}}</td>
+                        <td>{{a.customer_phoneno}}</td> 
+                        <td>{{a.customer_email}}</td>
+                             <td>{{a.gst_no}}</td>
+                        <td>{{a.customer_address}}</td>
+                    
+                        <td>{{a.added_date | date}} <br> {{a.added_date | date:'hh:mm a'}}</td>
+                       
+                                              <td *ngIf="isAdmin"> <a type="button" (click)="EditVendors(a.customer_id)" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1" title="Edit a Customers">
+                                <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                            </a></td>
+                        <td *ngIf="isAdmin"><a type="button" (click)="DeleteVendors(a['customer_id'])" title="Delete a Admin"><i
+                                    class="fa-regular fa-trash-can fa-lg"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>  
+            <div class="text-center">
+                        <pagination-controls (pageChange)=" pro = $event "
+                            style="background-color: #252847 !important; z-index: -2 !important;">
+                        </pagination-controls>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Button trigger modal -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit customer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <br>
+                        <form [formGroup]="EditCustomersForm">
+                            
+                            <label for="company_name">Company Name</label>
+                            <input type="text" formControlName="company_name" class="form-control" placeholder="Enter Vendors company Name">
+                            <br>
+                         
+                            <label for="customer_name">Vendor Name </label>
+                            <input type="text" formControlName="customer_name" class="form-control" placeholder="Enter Vendor Name">
+                            <br>
+
+                            <label for="customer_phoneno">Vendor customer_phoneno</label>
+                            <input type="text" formControlName="customer_phoneno" class="form-control" placeholder="Enter Vendor customer_phoneno">
+                            <br>
+
+                            <label for="customer_email">Vendor customer_email</label>
+                            <input type="text" formControlName="customer_email" class="form-control" placeholder="Enter Vendor customer_email">
+                            <br>
+                            
+                            <label for="gst_no">Vendor Company GST No.</label>
+                            <input type="text" formControlName="gst_no" class="form-control" placeholder="Enter Vendor Company gst_no">
+                            <br>
+
+                            <label for="customer_address">Vendor customer_address</label>
+                            <textarea name="customer_address" id="" formControlName="customer_address" style="width: 100%;"></textarea>
+                            <!-- <input type="text"  class="form-control" placeholder="Enter customer_address"> -->
+                            <br>
+
+                            <button class="btn btn-success btn-lg mb-4" (click)="UpdateVendors()">Update Customers</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -25,6 +25,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CompanyComponent } from './pages/company/company.component';
+import { DeliverychallanComponent } from './pages/deliverychallan/deliverychallan.component';
+import { VendorjobworkchallanComponent } from './pages/vendorjobworkchallan/vendorjobworkchallan.component';
+import { VendorsComponent } from './pages/vendors/vendors.component';
+import { CustomerComponent } from './pages/customer/customer.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import { CompanyComponent } from './pages/company/company.component';
     ViewjobComponent,
     ViewmachinesComponent,
     SafeurlPipe,
-    CompanyComponent
+    CompanyComponent,
+    DeliverychallanComponent,
+    VendorjobworkchallanComponent,
+    VendorsComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,

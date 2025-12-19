@@ -1,0 +1,144 @@
+<div class="container-fluid">
+    <br><br><br><br>
+
+    <div class="text-end">
+        <button type="button" class="btn text-light btn-lg btt" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            title="Add Vendor">
+            Add New Vendor <i class="fa-solid fa-user-plus"></i>
+        </button>
+    </div>
+
+    <br> <br>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Vendor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <br>
+                        <form [formGroup]="AddVendorsform">
+                            <label for="company_name">Company Name</label>
+                            <input type="text" formControlName="company_name" class="form-control" placeholder="Enter Vendors company Name">
+                            <br>
+                         
+                            <label for="vendor_name">Vendor Name </label>
+                            <input type="text" formControlName="vendor_name" class="form-control" placeholder="Enter Vendor Name">
+                            <br>
+                            <label for="phone">Vendor Phone</label>
+                            <input type="text" formControlName="phone" class="form-control" placeholder="Enter Vendor Phone">
+                            <br>
+                            <label for="email">Vendor Email</label>
+                            <input type="text" formControlName="email" class="form-control" placeholder="Enter Vendor Email">
+                            <br>
+                            
+                            <label for="gst_no">Vendor Company GST No.</label>
+                            <input type="text" formControlName="gst_no" class="form-control" placeholder="Enter Vendor Company gst_no">
+                            <br>
+
+                            <label for="address">Vendor Address</label><br>
+                            <textarea name="address" id="" formControlName="address" style="width: 100%;"></textarea>
+                            <br>
+                            <br>
+                            <button class="btn btn-success btn-lg mb-4" (click)="AddVendors()">Add Vendor</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Vendor Name</th>
+                        <th scope="col">Vendor Code</th>
+                        <th scope="col">Vendor PhoneNo</th>
+                        <th scope="col">Vendor Email</th>
+                        <th scope="col">GSTNo</th>
+                        <th scope="col">Date</th>                        
+                        <th scope="col" *ngIf="isAdmin">Edit</th>
+                        <th scope="col" *ngIf="isAdmin">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of Allvendors | paginate : {itemsPerPage : 10, currentPage : pro }">
+                        <td>{{a.vendor_id }}</td>
+                        <td>{{a.vendor_name}}</td>
+                        <td>{{a.vendor_code}}</td>
+                        <td>{{a.phone}}</td> 
+                        <td>{{a.email}}</td>
+                        <td>{{a.address}}</td>
+                        <td>{{a.date | date}} <br> {{a.date | date:'hh:mm a'}}</td>
+                        <td>{{a.gst_no}}</td>
+                                              <td *ngIf="isAdmin"> <a type="button" (click)="EditVendors(a.vendor_id)" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1" title="Edit a Admin">
+                                <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                            </a></td>
+                        <td *ngIf="isAdmin"><a type="button" (click)="DeleteVendors(a['vendor_id'])" title="Delete a Admin"><i
+                                    class="fa-regular fa-trash-can fa-lg"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>  
+            <div class="text-center">
+                        <pagination-controls (pageChange)=" pro = $event "
+                            style="background-color: #252847 !important; z-index: -2 !important;">
+                        </pagination-controls>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Button trigger modal -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Admin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <br>
+                        <form [formGroup]="EditVendorsForm">
+                            
+                            <label for="company_name">Company Name</label>
+                            <input type="text" formControlName="company_name" class="form-control" placeholder="Enter Vendors company Name">
+                            <br>
+                         
+                            <label for="vendor_name">Vendor Name </label>
+                            <input type="text" formControlName="vendor_name" class="form-control" placeholder="Enter Vendor Name">
+                            <br>
+
+                            <label for="phone">Vendor Phone</label>
+                            <input type="text" formControlName="phone" class="form-control" placeholder="Enter Vendor Phone">
+                            <br>
+
+                            <label for="email">Vendor Email</label>
+                            <input type="text" formControlName="email" class="form-control" placeholder="Enter Vendor Email">
+                            <br>
+                            
+                            <label for="gst_no">Vendor Company GST No.</label>
+                            <input type="text" formControlName="gst_no" class="form-control" placeholder="Enter Vendor Company gst_no">
+                            <br>
+
+                            <label for="address">Vendor Address</label>
+                            <textarea name="address" id="" formControlName="address" style="width: 100%;"></textarea>
+                            <!-- <input type="text"  class="form-control" placeholder="Enter Address"> -->
+                            <br>
+
+                            <button class="btn btn-success btn-lg mb-4" (click)="UpdateVendors()">Update Vendors</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

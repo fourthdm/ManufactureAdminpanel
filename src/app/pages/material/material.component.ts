@@ -8,7 +8,7 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./material.component.css']
 })
 export class MaterialComponent {
- pro: any;
+  pro: any;
   AllMAterials: any[] = [];
 
   MaterialTypes: any[] = [];
@@ -185,11 +185,15 @@ export class MaterialComponent {
   }
 
   DeleteMaterial(Material_id: number) {
-    this._rest.DeleteMaterial(Material_id).subscribe((data: any) => {
-      console.log(data);
-      this.AllMAterials = data.data;
-    }, (err: any) => {
-      console.log(err);
-    });
+
+    if (confirm('Are you Sure to Delete a Material Record')) {
+      this._rest.DeleteMaterial(Material_id).subscribe((data: any) => {
+        console.log(data);
+        this.AllMAterials = data.data;
+        this.ngOnInit();
+      }, (err: any) => {
+        console.log(err);
+      });
+    }
   }
 }

@@ -40,12 +40,43 @@
                 <li class="nav-item menu-open" *ngIf="isAdmin">
                     <a href="#" class="nav-link" routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Company']">
-                        <i class="fa-solid fa-user-shield fa-xl"></i>
+                <i class="fa-solid fa-industry fa-xl"></i>
                         <p>
                             Companies
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item menu-open" *ngIf="isAdmin">
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Customer']">
+                    <i class="fa-solid fa-people-carry-box fa-xl"></i>
+                        <p>
+                            Customers
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open" *ngIf="isAdmin">
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/DeliveryChallan']">
+                  <i class="fa-solid fa-file-signature fa-xl"></i>
+                        <p>
+                            Delivery Challan
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open" *ngIf="isAdmin">
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Vendors']">
+                    <i class="fa-solid fa-house-signal fa-xl"></i>
+                        <p>
+                            Vendors
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-item menu-open" *ngIf="isAdmin">
                     <a href="#" class="nav-link" routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Employee']">
@@ -55,6 +86,7 @@
                         </p>
                     </a>
                 </li>
+
                 <li class="nav-item menu-open" *ngIf="isAdmin">
                     <a href="#" class="nav-link" routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Machine']">
@@ -64,6 +96,7 @@
                         </p>
                     </a>
                 </li>
+
                 <li class="nav-item menu-open" *ngIf="isAdmin">
                     <a href="#" class="nav-link" routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Material']">
@@ -73,20 +106,21 @@
                         </p>
                     </a>
                 </li>
-                <!-- <li class="nav-item menu-open" *ngIf="isAdmin">
+                
+                <li class="nav-item menu-open" *ngIf="isAdmin">
                     <a href="#" class="nav-link" routerLinkActive="active-link"
-                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Job']">
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/VendorJobWorkChallan']">
                         <i class="fa-solid fa-file-pen fa-xl"></i>
                         <p>
-                            Job's
+                          JobWorkChallan's
                         </p>
                     </a>
-                </li> -->
+                </li>
 
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link" routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/AssignJob']">
-                        <i class="fa-solid fa-user-tag fa-xl"></i>
+                      <i class="fa-regular fa-id-card fa-xl"></i>
                         <p>
                             Asssign Job's
                         </p>
@@ -95,7 +129,7 @@
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link" routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/Jobss']">
-                        <i class="fa-solid fa-user-tag fa-xl"></i>
+               <i class="fa-solid fa-person-booth fa-xl"></i>
                         <p>
                             Job
                         </p>
@@ -104,7 +138,7 @@
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link" routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/DesingerJob']">
-                        <i class="fa-solid fa-hospital-user fa-xl"></i>
+                      <i class="fa-solid fa-chalkboard-user fa-xl"></i>
                         <p>
                             Design Job's
                         </p>

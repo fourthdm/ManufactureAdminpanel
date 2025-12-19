@@ -33,6 +33,7 @@ export class JobComponent {
       Material_Issued: new FormControl("", Validators.required),
       DesignFile: new FormControl(null)
     }),
+
       this.Editjobsform = this.fb.group({
         Job_id: new FormControl(""),
         J_Name: new FormControl("", Validators.required),
@@ -139,34 +140,88 @@ export class JobComponent {
   //     this.Editjobsform.patchValue(r))
   // }
 
+  // editjobs(Job_id: number) {
+  //   const Assignjobs = this.Alljob.find(A => A.Job_id === Job_id);
+  //   if (Assignjobs) {
+  //     this.SelectedJob = 1;
+  //     this.Editjobsform.patchValue(Assignjobs);
+  //   }
+  // }
+
+  // onFileChange(event: any, fieldName: string): void {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     this.Editjobsform.patchValue({ [fieldName]: file });
+  //   }
+  // }
   editjobs(Job_id: number) {
-    const Assignjobs = this.Alljob.find(A => A.Job_id === Job_id);
-    if (Assignjobs) {
+    const job = this.Alljob.find(j => j.Job_id === Job_id);
+    if (job) {
       this.SelectedJob = 1;
-      this.Editjobsform.patchValue(Assignjobs);
+
+      this.Editjobsform.patchValue({
+        Job_id: job.Job_id,
+        J_Name: job.J_Name,
+        E_id: job.E_id,
+        Machine_id: job.Machine_id,
+        Material_id: job.Material_id,
+        Material_Issued: job.Material_Issued
+      });
     }
   }
-
-  onFileChange(event: any, fieldName: string): void {
+  onFileChange(event: any) {
     const file = event.target.files[0];
     if (file) {
-      this.Editjobsform.patchValue({ [fieldName]: file });
+      this.Editjobsform.patchValue({
+        DesignFile: file
+      });
     }
   }
 
   JobUpdates() {
-    const formdata = new FormData;
-    Object.keys(this.Editjobsform.controls).forEach((key: any) => {
-      formdata.append(key, this.Editjobsform.get(key)?.value)
-    }),
-      this._rest.UpdatedAJobnewTable(this.Editjobsform.value.Job_id, formdata).subscribe((data: any) => {
-        console.log("Update success", data),
-          this.Editjobsform.reset(),
-          this.ngOnInit()
-      }, (err: any) => {
-        console.error("Update error", err);
-      });
+    const formData = new FormData();
+
+    formData.append('J_Name', this.Editjobsform.value.J_Name);
+    formData.append('E_id', this.Editjobsform.value.E_id);
+    formData.append('Machine_id', this.Editjobsform.value.Machine_id);
+    formData.append('Material_id', this.Editjobsform.value.Material_id);
+    formData.append('Material_Issued', this.Editjobsform.value.Material_Issued);
+
+    if (this.Editjobsform.value.DesignFile) {
+      formData.append(
+        'DesignFile',
+        this.Editjobsform.value.DesignFile
+      );
+    }
+
+    const jobId = this.Editjobsform.value.Job_id;
+
+    this._rest.UpdatedAJobnewTable(jobId, formData).subscribe(
+      (res: any) => {
+        console.log('Update success', res);
+        this.Editjobsform.reset();
+        this.ngOnInit();
+      },
+      (err: any) => {
+        console.error('Update error', err);
+      }
+    );
   }
+
+
+  // JobUpdates() {
+  //   const formdata = new FormData;
+  //   Object.keys(this.Editjobsform.controls).forEach((key: any) => {
+  //     formdata.append(key, this.Editjobsform.get(key)?.value)
+  //   }),
+  //     this._rest.UpdatedAJobnewTable(this.Editjobsform.value, formdata).subscribe((data: any) => {
+  //       console.log("Update success", data),
+  //         this.Editjobsform.reset(),
+  //         this.ngOnInit()
+  //     }, (err: any) => {
+  //       console.error("Update error", err);
+  //     });
+  // }
 
   Allemp() {
     this._rest.AllOnlyEmployee().subscribe((data: any) => {

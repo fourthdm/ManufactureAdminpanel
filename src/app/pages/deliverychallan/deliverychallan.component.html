@@ -1,0 +1,212 @@
+<br><br><br>
+
+ <div class="text-end">
+        <button type="button" class="btn text-light btn-lg btt" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            title="Add Vendor">
+         Create a New Delivery Challan  <i class="fa-solid fa-user-plus"></i>
+        </button>
+    </div>
+
+    <br> <br>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create a Delivery Challan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <br>
+                      <form [formGroup]="DeliverychallanForm">
+
+<h3 style="color: white;">Customer Challan</h3>
+
+<!-- JOB + Customer -->
+<div class="row">
+  <div class="col">
+    <label>Job ID</label>
+    <!-- <input class="form-control" formControlName="job_id"> -->
+      <select class="form-control" formControlName="job_id">
+      <option value="">Select Job Id</option>
+      <option *ngFor="let v of Alljob" [value]="v.job_id">
+        {{ v.J_Name }} 
+      </option>
+    </select>
+  </div>
+
+  <div class="col">
+    <label>Customer</label>
+    <select class="form-control" formControlName="customer_id">
+      <option value="">Select Customer</option>
+      <option *ngFor="let v of AllCustomers" [value]="v.customer_id">
+        {{ v.customer_name }} ({{ v.customer_code }})
+      </option>
+    </select>
+  </div>
+  <br>
+  <div class="col">
+    <label>Purchase Order No</label>
+    <input class="form-control" formControlName="po_no">
+  </div>
+</div>
+
+<br>
+
+<!-- PROCESSING -->
+<div class="row">
+ 
+  <div class="col">
+    <label>Remark</label>
+    <textarea class="form-control"
+      formControlName="remark"></textarea>
+  </div>
+</div>
+
+<br>
+
+<!-- TRANSPORT -->
+<div class="row">
+  <div class="col">
+    <label>Transport Mode</label>
+    <input class="form-control" formControlName="transport_mode">
+  </div>
+
+  <div class="col">
+    <label>Transport Name</label>
+    <input class="form-control" formControlName="transport_name">
+  </div>
+
+  <div class="col">
+    <label>Vehicle No</label>
+    <input class="form-control" formControlName="vehicle_no">
+  </div>
+</div>
+
+<hr>
+
+<!-- ITEMS -->
+
+<div formArrayName="items">
+     <h6>Add a Product</h6>
+  <div *ngFor="let item of items.controls; let i=index"
+       [formGroupName]="i" class="border p-2 mt-2">
+<div class="row">
+    <div class="col">   
+        <label for="job_name">Select Job Name </label> <br>
+        <!-- <input placeholder="Job Name" formControlName="job_name"><br> -->
+         
+        <select class="form-control" formControlName="job_name">
+      <option value="">Select Job Name</option>
+      <option *ngFor="let v of Alljob" [value]="v.J_Name">
+        {{ v.J_Name }} 
+      </option>
+    </select>
+
+    </div> <br>
+ 
+</div><br>
+<div class="row">
+    <div class="col">   
+        <label for="job_name">HSN Code </label> <br>
+     <input placeholder="HSN" formControlName="hsn_code"><br>
+    </div> <br>
+    <div class="col">   
+         <label for="processing_name">Number of Quantity </label> <br>
+           <input type="number" placeholder="Qty" formControlName="quantity"><br>
+    </div> <br>
+    <div class="col">   
+         <label for="processing_name">Rate </label><br>
+          <input type="number" placeholder="Rate" formControlName="rate"><br>
+    </div> <br>
+</div>
+
+ <br>
+   <br>
+    <button type="button" (click)="removeItem(i)">Remove</button>
+  </div>
+</div>
+
+<br>
+
+<button type="button" (click)="addItem()">Add Product</button>
+
+<br><br>
+
+<button type="button"
+  class="btn btn-success"
+  (click)="submitChallan()">
+  Create Challan
+</button>
+
+</form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br>
+
+<div class="container-fluid">
+    <br><br>
+      <div class="table-responsive">
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col"> Challan No</th>
+                        <th scope="col"> Customer Name </th>
+                        <th scope="col"> Job Name</th>
+                        <th scope="col"> Challan Date</th>
+                        <th scope="col"> Purchase Order No</th>
+                        <th scope="col"> Remark</th>
+                        <th scope="col">Transport Mode</th>
+                        <th scope="col">Transport Name</th>
+                        <th scope="col">Vehicle No</th>
+                        <th scope="col">Sub Total</th>
+                        <th scope="col">CGST </th>
+                        <th scope="col">SGST</th>
+                        <th scope="col">Total Amount</th>
+                        <th scope="col">Added Date</th>
+                        <th scope="col">Download</th>
+                        <th scope="col">Print</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of AllDeliveryChallans | paginate : {itemsPerPage : 10, currentPage : pro }">
+                        <td>{{a.delivery_challan_id}}</td>
+                        <td>{{a.challan_no}}</td>
+                        <td>{{a.customer_name}}</td>
+                        <td>{{a.J_Name}}</td>                  
+                        <td>{{a.challan_date}}</td>
+                        <td>{{a.po_no}}</td>
+                        <td>{{a.remark}}</td>
+                        <td>{{a.transport_mode}}</td>
+                        <td>{{a.transport_name}}</td>
+                        <td>{{a.vehicle_no}}</td>
+                        <td>{{a.subtotal}}</td>
+                        <td>{{a.cgst_amount}}</td>
+                        <td>{{a.sgst_amount}}</td>
+                        <td>{{a.total_amount}}</td>
+                        <td>{{a.date | date}} <br> {{a.date | date:'hh:mm a'}}</td>
+                            <td style="text-align: center;"><a (click)="downloadPdf(a.delivery_challan_id)" title="Download"><i
+                                    class="fa-solid fa-file-arrow-down fa-lg"></i></a> </td>
+                        <td style="text-align: center;"> <a (click)="printPdf(a.delivery_challan_id)" title="Print a Receipt"> <span style="color: white;">🖨</span></a></td>
+                     
+                    </tr>
+                    
+                </tbody>
+            </table>  
+            <div class="text-center">
+                        <pagination-controls (pageChange)=" pro = $event "
+                            style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
+                    </div>
+        </div>
+    <br>
+
+
+
+
+</div>
+<br><br>
