@@ -18,6 +18,7 @@ import { VendorjobworkchallanComponent } from './pages/vendorjobworkchallan/vend
 import { VendorsComponent } from './pages/vendors/vendors.component';
 import { CustomerComponent } from './pages/customer/customer.component';
 import { DeliverychallanComponent } from './pages/deliverychallan/deliverychallan.component';
+import { PurchaseorderComponent } from './pages/purchaseorder/purchaseorder.component';
 
 const routes: Routes = [
   { path: ' ', redirectTo: 'login', pathMatch: "full" },
@@ -38,10 +39,11 @@ const routes: Routes = [
       { path: 'AssignJob', component: AsssignjobComponent },
       { path: 'DesingerJob', component: DesignerjobComponent },
       { path: 'Customer', component: CustomerComponent },
-      { path: 'DeliveryChallan',component:DeliverychallanComponent },
+      { path: 'DeliveryChallan', component: DeliverychallanComponent },
       { path: 'Vendors', component: VendorsComponent },
       { path: 'VendorJobWorkChallan', component: VendorjobworkchallanComponent, title: 'Vendor Job Work Challan Page ' },
       { path: 'Company', component: CompanyComponent },
+      { path: 'PurchaseOrder', component: PurchaseorderComponent },
       { path: '**', redirectTo: 'dashboard' }
     ]
   },

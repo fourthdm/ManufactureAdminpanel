@@ -63,3 +63,13 @@ select {
 .form-check-label {
     margin-left: 12px;
 }
+
+img{
+    width: 200px !important;
+    background-color: #31355A;
+}
+
+.col .text-center{
+    background-color: #31355A;
+    color: white;
+}

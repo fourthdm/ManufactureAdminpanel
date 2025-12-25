@@ -26,6 +26,7 @@ export class DeliverychallanComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+     this.VendorsChallans();
     this.DeliverychallanForm = this.fb.group({
       job_id: ['', Validators.required],
       customer_id: ['', Validators.required],
@@ -42,7 +43,7 @@ export class DeliverychallanComponent implements OnInit {
     this.addItem();
     this.AllJobs();
     this.Vendors();
-    this.VendorsChallans();
+   
   }
 
   get items(): FormArray {
@@ -74,7 +75,8 @@ export class DeliverychallanComponent implements OnInit {
     console.log('✅ Payload:', this.DeliverychallanForm.value);
 
     this.http.post<any>(
-      'https://ysurveillance.com/Manufacture/delivery-challan/create',
+      // 'https://ysurveillance.com/Manufacture/delivery-challan/create',
+      'http://localhost:3000/delivery-challan/create',
       this.DeliverychallanForm.value
     ).subscribe({
       next: res => {

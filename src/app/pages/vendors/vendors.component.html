@@ -62,7 +62,8 @@
                         <th scope="col">Vendor Code</th>
                         <th scope="col">Vendor PhoneNo</th>
                         <th scope="col">Vendor Email</th>
-                        <th scope="col">GSTNo</th>
+                        <th scope="col">Vendor Address</th>
+                        <th scope="col">GST No</th>
                         <th scope="col">Date</th>                        
                         <th scope="col" *ngIf="isAdmin">Edit</th>
                         <th scope="col" *ngIf="isAdmin">Delete</th>
@@ -75,13 +76,14 @@
                         <td>{{a.vendor_code}}</td>
                         <td>{{a.phone}}</td> 
                         <td>{{a.email}}</td>
-                        <td>{{a.address}}</td>
+                        <td>{{a.address}}</td> 
+                         <td>{{a.gst_no}}</td>
                         <td>{{a.date | date}} <br> {{a.date | date:'hh:mm a'}}</td>
-                        <td>{{a.gst_no}}</td>
-                                              <td *ngIf="isAdmin"> <a type="button" (click)="EditVendors(a.vendor_id)" data-bs-toggle="modal"
+                        <td *ngIf="isAdmin"> <a type="button" (click)="EditVendors(a.vendor_id)" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal1" title="Edit a Admin">
                                 <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                            </a></td>
+                            </a>
+                        </td>
                         <td *ngIf="isAdmin"><a type="button" (click)="DeleteVendors(a['vendor_id'])" title="Delete a Admin"><i
                                     class="fa-regular fa-trash-can fa-lg"></i></a></td>
                     </tr>
@@ -141,4 +143,122 @@
             </div>
         </div>
     </div>
+
+<!-- <div class="table table-bordered">
+    <div class="row">
+        <div class="col">   <img src="/assets/logo.png"  alt=""></div>
+        <div class="col">
+        <div class="text-center">
+            <p>Manufacture Companies </p>
+          
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non distinctio animi est
+                 adipisci ipsa unde tenetur recusandae eveniet, repudiandae vero?</p>
+            <p><span>GSTIN : </span>    <span>Pan Number :</span>   <span>PhoneNo:</span></p>
+        </div>
+        </div>
+        <div class="col"></div>
+    
+    </div>
+    <thead>
+        <tr>
+            <td colspan="4"> 
+                <p>Company Name: </p> <br><br>
+                <p>Vendor Code : </p> 
+                <p>GST No. :</p>    
+            </td>
+            <td colspan="3"> 
+                <p>Challan No. :   55645256<span  style="margin-left: 25%;">  Challan Date : 12-12-2025</span> </p>
+                <p>Our Ref No. :5463653<span  style="margin-left: 27%;">Date: 12-12-2025 </span></p>
+                <p>P.O No. :895623932 <span  style="margin-left: 28%;">P.O Date:12-12-2025 </span>   </p>
+                <p>Buyer Ref No. : 4545798545 <span  style="margin-left: 22%;"> Buyer Ref Date : 12-12-2025</span>    </p>
+            </td>
+            
+        </tr>
+<tr></tr>
+        <tr>
+        <th>Sr No</th>
+        <th>Product Name</th>
+        <th>HSN No.</th>
+        <th>Quantity</th>
+        <th>Rate</th>
+        <th>Total Amount</th>
+        </tr>
+    </thead>
+    <tbody >
+      
+        <tr *ngFor="let a of Allvendors">
+            <td>{{a.vendor_id}}</td>
+            <td>{{a.vendor_code}}</td>
+            <td>{{a.phone}}</td> 
+            <td>{{a.email}}</td>
+            <td>{{a.address}}</td> 
+            <td>{{a.gst_no}}</td>
+        </tr>
+    </tbody>
+     <tfoot>
+        <tr>
+            <td colspan="5"></td>
+            <td>Sub Total: : $ 50.00 </td>
+        </tr>
+     <tr>
+
+        <td colspan="5">
+            Nature Of Processing : 
+        </td>
+        <td >
+            CGST : $ 50.00 <br>
+            SGST: : $ 50.00 <br>
+            Total Amount: : $ 50.00</td>
+      </tr>
+      <tr>
+        <td colspan="5">Remark :</td>
+        <td rowspan="2">   Authorised Signatory :</td>
+      </tr>
+      <tr>
+        <td colspan="4">Mode Of Transport : 
+            <br> Name of Transport :
+            <br> Vehicle No. :  
+        </td>
+        <td colspan="1">
+            <div class="text-center bottom-fixed">
+                Receiver's Name & Signature
+            </div>
+        </td>
+              </tr>
+            </tfoot>
+       <div class="text-center">
+               <p style="color: white;"> This is a system-generated vendor job work challan.</p>
+              </div>
+</div>
+
+    <div class="receipt">
+  <h2>Business Name</h2>
+  <p>123 Street Address, City</p>
+  <hr>
+  <p>Receipt #: 1001 <br> Date: 2025-12-22</p>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Qty</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Service/Product A</td>
+        <td>1</td>
+        <td>$50.00</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="2">Total</th>
+        <td>$50.00</td>
+      </tr>
+    </tfoot>
+  </table>
+</div> -->
+
 </div>

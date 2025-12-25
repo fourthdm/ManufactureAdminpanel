@@ -3,7 +3,7 @@
 <div class="container">
     <br>
     <div class="text-end">
-        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Add New Job" class="btn text-light btt btn-lg">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Add New Job" class="btn btn-outline-light btn-lg">
             Add New Job
             <i class="fa-solid fa-square-plus"></i>
         </button>
@@ -83,10 +83,10 @@
                 <div class="card-body">
                     <div class="rowinline">
                         <div class="text-start">
-                            <p title="View Information" class="info" tabindex="0" [routerLink]="['/Home/JobInformation',j.Job_id ]">
+                            <a title="View Job Information" class="info" tabindex="0" [routerLink]="['/Home/JobInformation',j.Job_id ]">
                                 <b>Job_id :</b>
                                 {{j.Job_id}}
-                            </p>
+                            </a>
                         </div>
                         <div class="actions">
                             <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" title="Edit a Job" (click)="editjobs(j.Job_id)">
@@ -97,6 +97,7 @@
                             </a>
                         </div>
                     </div>
+                    <br>
                     <p title="View Information" class="info" tabindex="0">
                         <b>Job Name :</b>
                      {{j.J_Name}}

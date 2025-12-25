@@ -20,22 +20,21 @@
                     <div class="col-md-12">
                         <br>
                         <form [formGroup]="AddCustomerform">
-                            <label for="company_name">Company Name</label>
-                            <input type="text" formControlName="company_name" class="form-control" placeholder="Enter  company Name">
-                            <br>
-                         
+                                                   
                             <label for="customer_name">Customer Name </label>
-                            <input type="text" formControlName="customer_name" class="form-control" placeholder="Enter Vendor Name">
+                            <input type="text" formControlName="customer_name" class="form-control" placeholder="Enter Customer Name">
                             <br>
-                            <label for="customer_phoneno">Customer phoneno</label>
+                            <label for="customer_phoneno">Customer Phone Number</label>
                             <input type="text" formControlName="customer_phoneno" class="form-control" placeholder="Enter  customer_phoneno">
                             <br>
                             <label for="customer_email">Customer Email</label>
                             <input type="text" formControlName="customer_email" class="form-control" placeholder="Enter  customer_email">
                             <br>
-                            
+                              <label for="company_name">Company Name</label>
+                            <input type="text" formControlName="company_name" class="form-control" placeholder="Enter  company Name">
+                            <br>
                             <label for="gst_no">Customer Company GST No.</label>
-                            <input type="text" formControlName="gst_no" class="form-control" placeholder="Enter Vendor Company gst_no">
+                            <input type="text" formControlName="gst_no" class="form-control" placeholder="Enter Customer Company gst_no">
                             <br>
 
                             <label for="customer_address">Customer_address</label><br>
@@ -119,27 +118,27 @@
                             <input type="text" formControlName="company_name" class="form-control" placeholder="Enter Vendors company Name">
                             <br>
                          
-                            <label for="customer_name">Vendor Name </label>
-                            <input type="text" formControlName="customer_name" class="form-control" placeholder="Enter Vendor Name">
+                            <label for="customer_name">Customer Name </label>
+                            <input type="text" formControlName="customer_name" class="form-control" placeholder="Enter Customer Name">
                             <br>
 
-                            <label for="customer_phoneno">Vendor customer_phoneno</label>
-                            <input type="text" formControlName="customer_phoneno" class="form-control" placeholder="Enter Vendor customer_phoneno">
+                            <label for="customer_phoneno">Customer Phone Number</label>
+                            <input type="text" formControlName="customer_phoneno" class="form-control" placeholder="Enter customer_phoneno">
                             <br>
 
-                            <label for="customer_email">Vendor customer_email</label>
+                            <label for="customer_email">Customer Email</label>
                             <input type="text" formControlName="customer_email" class="form-control" placeholder="Enter Vendor customer_email">
                             <br>
                             
-                            <label for="gst_no">Vendor Company GST No.</label>
+                            <label for="gst_no">Customer Company GST No.</label>
                             <input type="text" formControlName="gst_no" class="form-control" placeholder="Enter Vendor Company gst_no">
                             <br>
 
-                            <label for="customer_address">Vendor customer_address</label>
+                            <label for="customer_address">Customer Address</label>
                             <textarea name="customer_address" id="" formControlName="customer_address" style="width: 100%;"></textarea>
                             <!-- <input type="text"  class="form-control" placeholder="Enter customer_address"> -->
                             <br>
-
+                            <br>
                             <button class="btn btn-success btn-lg mb-4" (click)="UpdateVendors()">Update Customers</button>
                         </form>
                     </div>

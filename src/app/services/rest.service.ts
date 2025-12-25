@@ -6,8 +6,8 @@ import { StateService } from './state.service';
   providedIn: 'root'
 })
 export class RestService {
-  // Url = 'http://localhost:3000';
-  Url = 'https://ysurveillance.com/Manufacture';
+  Url = 'http://localhost:3000';
+  // Url = 'https://ysurveillance.com/Manufacture';
 
   constructor(private _http: HttpClient, private _state: StateService) { }
 
@@ -353,6 +353,26 @@ export class RestService {
   DelteCustomer(customer_id:any){
     return this._http.delete(this.Url + '/DeleteCustomers/' + customer_id);
   }
-  //APi for Customerends
+  //APi for Customer ends
+
+  //API for PurchaseOrder 
+
+  ADDPurchaseorder(data:any){
+    return this._http.post(this.Url +'/AddPurchaseOrder', data);
+  }
+
+  AllPurchaseOrder(){
+    return this._http.get(this.Url + '/AllPurchaseOrder');
+  }
+
+  EditPurchaseOrder(data : any){
+    return this._http.put(this.Url +'/UpdatePurchaseOrder/' + data.purchase_order_id,data);
+  }
+
+  DeletePurchaseOrder(purchase_order_id : number){
+    return this._http.delete(this.Url + '/DeletePurchaseOrder/' + purchase_order_id);
+  }
+
+  //API for PurchaseOrder ENDS
 
 }

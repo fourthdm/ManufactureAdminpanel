@@ -59,6 +59,16 @@
 
                 <li class="nav-item menu-open" *ngIf="isAdmin">
                     <a href="#" class="nav-link" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/PurchaseOrder']">
+                    <i class="fa-solid fa-hand-holding-hand fa-xl"></i>
+                        <p>
+                            Purchase Order
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open" *ngIf="isAdmin">
+                    <a href="#" class="nav-link" routerLinkActive="active-link"
                         [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/Home/DeliveryChallan']">
                   <i class="fa-solid fa-file-signature fa-xl"></i>
                         <p>

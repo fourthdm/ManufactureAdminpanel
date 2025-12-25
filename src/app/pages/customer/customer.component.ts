@@ -117,7 +117,7 @@ export class CustomerComponent {
   }
 
   DeleteVendors(customer_id: any) {
-    if (confirm('Are You sure to Delete Vendor Data')) {
+    if (confirm('Are You sure to Delete Customer Data')) {
       this._rest.DelteCustomer(customer_id).subscribe((data: any) => {
         console.log(data);
         this.ngOnInit();
