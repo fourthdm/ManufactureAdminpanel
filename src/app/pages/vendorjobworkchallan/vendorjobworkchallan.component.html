@@ -37,12 +37,24 @@
 <div class="row">
   <div class="col">
     <label>Purchase Order No</label>
-    <input class="form-control" formControlName="purchase_order_no">
+     <select class="form-control" formControlName="purchase_order_no">
+      <option value="">Select Purchase Order Number</option>
+      <option *ngFor="let v of AllPurchaseOrder" [value]="v.purchase_order_id ">
+        {{ v.purchase_no }} ({{ v.purchase_order_id  }} )
+      </option>
+    </select>
+    <!-- <input class="form-control" formControlName="purchase_order_no"> -->
   </div>
 
   <div class="col">
     <label>Purchase Date</label>
-    <input type="date" class="form-control" formControlName="purchase_date">
+       <select class="form-control" formControlName="purchase_order_no">
+      <option value="">Select Purchase Date</option>
+      <option *ngFor="let v of AllPurchaseOrder" [value]="v.purchase_order_id ">
+        {{ v.purchase_date |date }}  ( {{ v.purchase_order_id}} )
+      </option>
+    </select>
+    <!-- <input type="date" class="form-control" formControlName="purchase_date"> -->
   </div>
 </div>
 

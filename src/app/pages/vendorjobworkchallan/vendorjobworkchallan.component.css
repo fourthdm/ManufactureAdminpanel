@@ -15,6 +15,7 @@
         width: 100%;
     }
 }
+
 .container-fluid {
     padding: 2%;
     min-height: 100vh;
@@ -24,7 +25,7 @@
     border: 1px solid white;
 }
 
-.text-end{
+.text-end {
     margin-right: 5%;
 }
 
@@ -61,6 +62,7 @@ select {
     background-color: #2C1D60;
     color: white;
     width: 100%;
+    margin-bottom: 4%;
 }
 
 .modal-content {
@@ -81,11 +83,17 @@ select {
     margin-left: 12px;
 }
 
-label{
+label {
     color: white;
 }
 
-a{
+a {
     cursor: pointer;
     color: white;
+}
+
+option {
+    background-color: #2C1D60;
+    color: white;
+
 }

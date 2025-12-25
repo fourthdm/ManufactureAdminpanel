@@ -14,6 +14,7 @@ export class DeliverychallanComponent implements OnInit {
   AllCustomers: any[] = [];
   AllDeliveryChallans: any[] = [];
   Alljob: any[] = [];
+  AllPurchaseOrder: any[] = [];
 
   DeliverychallanForm!: FormGroup;
   challanNo = '';
@@ -26,7 +27,7 @@ export class DeliverychallanComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-     this.VendorsChallans();
+    this.VendorsChallans();
     this.DeliverychallanForm = this.fb.group({
       job_id: ['', Validators.required],
       customer_id: ['', Validators.required],
@@ -43,7 +44,7 @@ export class DeliverychallanComponent implements OnInit {
     this.addItem();
     this.AllJobs();
     this.Vendors();
-   
+    this.PurchaseOrder();
   }
 
   get items(): FormArray {
@@ -145,6 +146,15 @@ export class DeliverychallanComponent implements OnInit {
           URL.revokeObjectURL(url);
         }
       });
+  }
+
+  PurchaseOrder() {
+    this._rest.AllPurchaseOrder().subscribe((data: any) => {
+      this.AllPurchaseOrder = data.data;
+      console.log(data);
+    }, (err: any) => {
+      console.log(err);
+    });
   }
 
 }

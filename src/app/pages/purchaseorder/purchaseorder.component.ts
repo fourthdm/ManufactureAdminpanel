@@ -52,6 +52,7 @@ export class PurchaseorderComponent implements OnInit {
       }
     }
   }
+  
   PurchaseOrder() {
     this._rest.AllPurchaseOrder().subscribe((data: any) => {
       this.AllPurchaseOrder = data.data;

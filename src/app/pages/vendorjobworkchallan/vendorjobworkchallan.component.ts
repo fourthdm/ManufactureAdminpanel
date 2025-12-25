@@ -9,9 +9,10 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./vendorjobworkchallan.component.css']
 })
 export class VendorjobworkchallanComponent implements OnInit {
-  pro:any;
+  pro: any;
   Allvendors: any[] = [];
   AllChallans: any[] = [];
+  AllPurchaseOrder: any[] = [];
 
   challanForm!: FormGroup;
   challanNo = '';
@@ -42,6 +43,7 @@ export class VendorjobworkchallanComponent implements OnInit {
     this.addItem();
     this.Vendors();
     this.VendorsChallans();
+    this.PurchaseOrder();
   }
 
   get items(): FormArray {
@@ -104,7 +106,7 @@ export class VendorjobworkchallanComponent implements OnInit {
   }
 
 
-    downloadPdf(challan_id: any) {
+  downloadPdf(challan_id: any) {
     this._rest.GenerateChallan(challan_id)
       .subscribe((file: Blob) => {
         const url = window.URL.createObjectURL(file);
@@ -134,6 +136,15 @@ export class VendorjobworkchallanComponent implements OnInit {
           URL.revokeObjectURL(url);
         }
       });
+  }
+
+  PurchaseOrder() {
+    this._rest.AllPurchaseOrder().subscribe((data: any) => {
+      this.AllPurchaseOrder = data.data;
+      console.log(data);
+    }, (err: any) => {
+      console.log(err);
+    });
   }
 
   //   Allvendors: any[] = [];

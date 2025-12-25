@@ -48,7 +48,13 @@
   <br>
   <div class="col">
     <label>Purchase Order No</label>
-    <input class="form-control" formControlName="po_no">
+    <select class="form-control" formControlName="po_no">
+      <option value="">Select Purchase Order Number</option>
+      <option *ngFor="let v of AllPurchaseOrder" [value]="v.purchase_order_id ">
+        {{ v.purchase_no }} ({{ v.purchase_order_id  }} )
+      </option>
+    </select>
+    <!-- <input class="form-control" formControlName="po_no"> -->
   </div>
 </div>
 
