@@ -179,13 +179,13 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let a of AllChallans | paginate : {itemsPerPage : 10, currentPage : pro }">
-                        <td>{{a.challan_id}}</td>
+                        <td> <a href=""  [routerLink]="['/Home/VendorChallan',a.challan_id ]" title="View a Challan Details">  {{a.challan_id}}</a></td>
                         <td>{{a.challan_no}}</td>
                         <td>{{a.vendor_name}}</td>
                         <td>{{a.J_Name}}</td>                  
-                        <td>{{a.challan_date}}</td>
+                        <td>{{a.challan_date | date}}</td>
                         <td>{{a.purchase_order_no}}</td>
-                        <td>{{a.purchase_date}}</td>
+                        <td>{{a.purchase_date |date}}</td>
                         <td>{{a.nature_of_processing}}</td>
                         <!-- <td>{{a.remark}}</td>
                         <td>{{a.transport_mode}}</td>

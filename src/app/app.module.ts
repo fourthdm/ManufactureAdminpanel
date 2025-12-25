@@ -30,6 +30,8 @@ import { VendorjobworkchallanComponent } from './pages/vendorjobworkchallan/vend
 import { VendorsComponent } from './pages/vendors/vendors.component';
 import { CustomerComponent } from './pages/customer/customer.component';
 import { PurchaseorderComponent } from './pages/purchaseorder/purchaseorder.component';
+import { ViewdeliverychallanComponent } from './pages/viewdeliverychallan/viewdeliverychallan.component';
+import { ViewvendorchallanComponent } from './pages/viewvendorchallan/viewvendorchallan.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { PurchaseorderComponent } from './pages/purchaseorder/purchaseorder.comp
     VendorjobworkchallanComponent,
     VendorsComponent,
     CustomerComponent,
-    PurchaseorderComponent
+    PurchaseorderComponent,
+    ViewdeliverychallanComponent,
+    ViewvendorchallanComponent
   ],
   imports: [
     BrowserModule,

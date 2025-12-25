@@ -19,6 +19,8 @@ import { VendorsComponent } from './pages/vendors/vendors.component';
 import { CustomerComponent } from './pages/customer/customer.component';
 import { DeliverychallanComponent } from './pages/deliverychallan/deliverychallan.component';
 import { PurchaseorderComponent } from './pages/purchaseorder/purchaseorder.component';
+import { ViewdeliverychallanComponent } from './pages/viewdeliverychallan/viewdeliverychallan.component';
+import { ViewvendorchallanComponent } from './pages/viewvendorchallan/viewvendorchallan.component';
 
 const routes: Routes = [
   { path: ' ', redirectTo: 'login', pathMatch: "full" },
@@ -36,6 +38,8 @@ const routes: Routes = [
       { path: 'Job', component: JobComponent },
       { path: 'Jobss', component: JobComponent },
       { path: 'JobInformation/:Job_id', component: ViewjobComponent },
+      { path: 'DeliveryChallan/:delivery_challan_id', component: ViewdeliverychallanComponent },
+      { path: 'VendorChallan/:challan_id', component: ViewvendorchallanComponent },
       { path: 'AssignJob', component: AsssignjobComponent },
       { path: 'DesingerJob', component: DesignerjobComponent },
       { path: 'Customer', component: CustomerComponent },

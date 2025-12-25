@@ -38,3 +38,7 @@ select {
 a{
     color: white;
 }
+
+.btt {
+    border: 1px solid white;
+}

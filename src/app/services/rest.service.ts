@@ -326,6 +326,10 @@ export class RestService {
     });
   }
 
+  Challanbyid(challan_id: any) {
+    return this._http.get(this.Url + '/Vendorchallanbyid/' + challan_id);
+  }
+
   DeliveryChallanData() {
     return this._http.get(this.Url + '/ALLDelivery-challan');
   }
@@ -334,6 +338,10 @@ export class RestService {
     return this._http.get(`${this.Url}/GetDeliveryChallanPDF/${delivery_challan_id}`, {
       responseType: 'blob'
     });
+  }
+
+  Deliverychallanbyid(delivery_challan_id: any) {
+    return this._http.get(this.Url + '/DeliveryChallanAllData/' + delivery_challan_id);
   }
   //VendorsChallan API Ends
 
@@ -350,26 +358,26 @@ export class RestService {
     return this._http.put(this.Url + '/UpdateCustomers/' + data.customer_id, data);
   }
 
-  DelteCustomer(customer_id:any){
+  DelteCustomer(customer_id: any) {
     return this._http.delete(this.Url + '/DeleteCustomers/' + customer_id);
   }
   //APi for Customer ends
 
   //API for PurchaseOrder 
 
-  ADDPurchaseorder(data:any){
-    return this._http.post(this.Url +'/AddPurchaseOrder', data);
+  ADDPurchaseorder(data: any) {
+    return this._http.post(this.Url + '/AddPurchaseOrder', data);
   }
 
-  AllPurchaseOrder(){
+  AllPurchaseOrder() {
     return this._http.get(this.Url + '/AllPurchaseOrder');
   }
 
-  EditPurchaseOrder(data : any){
-    return this._http.put(this.Url +'/UpdatePurchaseOrder/' + data.purchase_order_id,data);
+  EditPurchaseOrder(data: any) {
+    return this._http.put(this.Url + '/UpdatePurchaseOrder/' + data.purchase_order_id, data);
   }
 
-  DeletePurchaseOrder(purchase_order_id : number){
+  DeletePurchaseOrder(purchase_order_id: number) {
     return this._http.delete(this.Url + '/DeletePurchaseOrder/' + purchase_order_id);
   }
 

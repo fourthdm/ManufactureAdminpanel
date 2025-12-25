@@ -1,0 +1,39 @@
+
+<div class="container">
+
+    <br><br><br><br>   <div class="text-center">
+     <h2 class="text-light">Delivery Challan Details</h2>
+   </div><br>
+
+<div class="card" *ngFor="let a of Deliverychallan">
+  <div class="card-header">
+    <p> <b>Date : </b> {{a.date | date}}, <b>Time :</b> {{a.date | date:'hh:mm a'}}</p>
+  </div>
+  <div class="card-body">
+        <div class="row">
+                    <div class="col">
+                     <p> <b>Delivery Challan ID :</b> {{a.delivery_challan_id}}</p>
+                        <p> <b>Delivery Challan Number : </b> {{a.challan_no}}</p>
+                        <p> <b>Customer Name : </b> {{a.customer_name}}</p>
+                        <p> <b>Job Name : </b> {{a.J_Name}}</p>                  
+                        <p> <b>Challan Date : </b> {{a.challan_date | date}},  <b>Time :</b> {{a.challan_date | date:'hh:mm a'}} </p>
+                        <p> <b>Purchase Order Number : </b> {{a.po_no}}</p>
+                        <p> <b>Remark : </b> {{a.remark}}</p>
+                    </div>
+                    <br>
+
+                   <div class="col">
+                        <p> <b>Delivery Transport Mode : </b> {{a.transport_mode}}</p>
+                        <p> <b>Delivery Transport Name : </b> {{a.transport_name}}</p>
+                        <p> <b>Delivery Vehicle Number : </b> {{a.vehicle_no}}</p>
+                        <p> <b>Sub Total Amount : </b> {{a.subtotal}}</p>
+                        <p> <b>CGST Amount :  </b> {{a.cgst_amount}}</p>
+                        <p> <b>SGST Amount : </b> {{a.sgst_amount}}</p>
+                        <p> <b>Total Amount : </b> {{a.total_amount}}</p>                      
+                    </div>
+                    <br>
+        </div>                      
+  </div>
+</div>
+        <br><br><br>
+</div>

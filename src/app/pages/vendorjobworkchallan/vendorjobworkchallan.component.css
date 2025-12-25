@@ -84,3 +84,8 @@ select {
 label{
     color: white;
 }
+
+a{
+    cursor: pointer;
+    color: white;
+}

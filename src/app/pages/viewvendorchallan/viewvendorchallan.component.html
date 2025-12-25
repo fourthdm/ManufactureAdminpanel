@@ -1,0 +1,44 @@
+
+<div class="container">
+
+    <br><br><br><br>
+
+   <div class="text-center">
+     <h2 class="text-light">Vendor Challan Details</h2>
+   </div>
+<br>
+          
+<div class="card" *ngFor="let a of Vendorchallan ">
+  <div class="card-header">
+<p> <b>Date : </b> {{a.date | date}}, <b>Time :</b> {{a.date | date:'hh:mm a'}}</p>
+  </div>
+  <div class="card-body">
+      <div class="row">
+                    <div class="col">
+                        <p> <b>Vendor Challan ID :</b> {{a.challan_id}}</p>
+                        <p> <b>Vendor Code  :</b> {{a.vendor_code}}</p>
+                        <p> <b>Vendor Challan Number : </b> {{a.challan_no}}</p>
+                        <p> <b>Vendor Name : </b> {{a.vendor_name}}</p>
+                        <p> <b>Job Name : </b> {{a.J_Name}}</p>                  
+                        <p> <b>Challan Date : </b> {{a.challan_date | date}},  <b>  Time :</b> {{a.challan_date | date:'hh:mm a'}} </p>
+                        <p> <b>Purchase Order Number : </b> {{a.purchase_order_no}}</p>
+                        <p> <b>Processing : </b> {{a.nature_of_processing}}</p>
+                     
+                    </div>
+                    <br>
+
+                   <div class="col">
+                        <p> <b>Remark : </b> {{a.remark}}</p>
+                        <p> <b>Vendor Transport Mode : </b> {{a.transport_mode}}</p>
+                        <p> <b>Vendor Transport Name : </b> {{a.transport_name}}</p>
+                        <p> <b>Vendor Vehicle Number : </b> {{a.vehicle_no}}</p>
+                        <p> <b>Sub Total Amount : </b> &#8377; {{a.subtotal}}</p>
+                        <p> <b>CGST Amount :  </b> &#8377; {{a.cgst_amount}}</p>
+                        <p> <b>SGST Amount : </b> &#8377; {{a.sgst_amount}}</p>
+                        <p> <b>Total Amount : </b>  &#8377; {{a.total_amount}}</p>
+                       
+                    </div>
+                    <br>
+                </div>                      
+  </div>
+</div>

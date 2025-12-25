@@ -1,8 +1,9 @@
 <br><br><br>
 
  <div class="text-end">
+  <br><br>
         <button type="button" class="btn text-light btn-lg btt" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            title="Add Vendor">
+            title="Add Delivery Challan">
          Create a New Delivery Challan  <i class="fa-solid fa-user-plus"></i>
         </button>
     </div>
@@ -154,7 +155,7 @@
             <table class="table custom-table">
                 <thead>
                     <tr>
-                        <th scope="col">Id</th>
+                        <th scope="col" >Id</th>
                         <th scope="col"> Challan No</th>
                         <th scope="col"> Customer Name </th>
                         <th scope="col"> Job Name</th>
@@ -164,10 +165,10 @@
                         <th scope="col">Transport Mode</th>
                         <th scope="col">Transport Name</th>
                         <th scope="col">Vehicle No</th>
-                        <th scope="col">Sub Total</th>
+                        <!-- <th scope="col">Sub Total</th>
                         <th scope="col">CGST </th>
                         <th scope="col">SGST</th>
-                        <th scope="col">Total Amount</th>
+                        <th scope="col">Total Amount</th> -->
                         <th scope="col">Added Date</th>
                         <th scope="col">Download</th>
                         <th scope="col">Print</th>
@@ -175,38 +176,36 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let a of AllDeliveryChallans | paginate : {itemsPerPage : 10, currentPage : pro }">
-                        <td>{{a.delivery_challan_id}}</td>
+                        <td  ><a href="" [routerLink]="['/Home/DeliveryChallan',a.delivery_challan_id ]" title="View Delivery Challan">  {{a.delivery_challan_id}}</a></td>
                         <td>{{a.challan_no}}</td>
                         <td>{{a.customer_name}}</td>
                         <td>{{a.J_Name}}</td>                  
-                        <td>{{a.challan_date}}</td>
+                        <td>{{a.challan_date | date}}</td>
                         <td>{{a.po_no}}</td>
                         <td>{{a.remark}}</td>
                         <td>{{a.transport_mode}}</td>
                         <td>{{a.transport_name}}</td>
                         <td>{{a.vehicle_no}}</td>
-                        <td>{{a.subtotal}}</td>
+                        <!-- <td>{{a.subtotal}}</td>
                         <td>{{a.cgst_amount}}</td>
                         <td>{{a.sgst_amount}}</td>
-                        <td>{{a.total_amount}}</td>
+                        <td>{{a.total_amount}}</td> -->
                         <td>{{a.date | date}} <br> {{a.date | date:'hh:mm a'}}</td>
-                            <td style="text-align: center;"><a (click)="downloadPdf(a.delivery_challan_id)" title="Download"><i
+                        <td style="text-align: center;"><a (click)="downloadPdf(a.delivery_challan_id)" title="Download"><i
                                     class="fa-solid fa-file-arrow-down fa-lg"></i></a> </td>
-                        <td style="text-align: center;"> <a (click)="printPdf(a.delivery_challan_id)" title="Print a Receipt"> <span style="color: white;">🖨</span></a></td>
+                        <td style="text-align: center;">
+                           <a (click)="printPdf(a.delivery_challan_id)" title="Print a Receipt"> <span style="color: white;">🖨</span></a>
+                        </td>
                      
                     </tr>
-                    
                 </tbody>
             </table>  
             <div class="text-center">
                         <pagination-controls (pageChange)=" pro = $event "
-                            style="background-color: #252847 !important; z-index: -2 !important;"></pagination-controls>
-                    </div>
+                            style="background-color: #252847 !important; z-index: -2 !important;">
+                        </pagination-controls>
+            </div>
         </div>
     <br>
-
-
-
-
 </div>
 <br><br>
